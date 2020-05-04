@@ -28,8 +28,6 @@ public class DynamicLevel : MonoBehaviour
         levelX = fileContents[0].Length;
         levelZ = fileContents.Length;
 
-        Debug.Log("Level is : (" + levelX + ", " + levelZ + ")");
-
         return fileContents;
     }
 
@@ -39,9 +37,12 @@ public class DynamicLevel : MonoBehaviour
 
         for (int x = 0; x < levelX; x++)
         {
+            Debug.Log(strings[x]);
+
             for (int z = 0; z < levelZ; z++)
             {
                 Debug.Log(x + "," + z);
+                Debug.Log(strings[x][z]);
                 myTiles[x, z] = TileMaker(strings[x][z], new Vector3(x, 0, z));
             }
         }     

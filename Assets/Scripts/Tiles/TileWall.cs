@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class TileWall : Tile
 {
+    public override string MaterialFile { get { return "Materials/Wall"; } }
 
 }
