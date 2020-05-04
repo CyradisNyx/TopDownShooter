@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1902279855458372082}
   - component: {fileID: 9058088513164638708}
   - component: {fileID: 3275736014284808380}
+  - component: {fileID: 486493333557972733}
   m_Layer: 0
   m_Name: DoorPrefab
   m_TagString: Untagged
@@ -108,3 +109,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+--- !u!208 &486493333557972733
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053776032356398191}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.55, y: 1.05, z: 0.55}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
