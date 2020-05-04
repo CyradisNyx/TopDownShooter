@@ -306,6 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1604007933}
   - component: {fileID: 1604007932}
+  - component: {fileID: 1604007934}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -326,6 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: {fileID: 4900000, guid: d4cbfe12b187f4845bdff09443ebc73b, type: 3}
+  tilePrefab: {fileID: 282162464025038093, guid: 505124147fac9fc42808b26b1515fd5b,
+    type: 3}
 --- !u!4 &1604007933
 Transform:
   m_ObjectHideFlags: 0
@@ -340,3 +343,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!156049354 &1604007934
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604007931}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 1
