@@ -22,7 +22,7 @@ public class DynamicLevel : MonoBehaviour
         string[] fileContents = file.text.Split('\n');
         for (int i = 0; i < fileContents.Length; i++)
         {
-            fileContents[i] = fileContents[i].Remove(fileContents[i].Length - 1);
+            if (i != (fileContents.Length - 1)) { fileContents[i] = fileContents[i].Remove(fileContents[i].Length - 1); }
         }
 
         levelZ = fileContents[0].Length;
