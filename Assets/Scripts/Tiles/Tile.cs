@@ -19,6 +19,13 @@ public class Tile : MonoBehaviour
 
         material = Resources.Load<Material>(MaterialFile);
         GetComponent<Renderer>().material = material;
+
+        Constructor();
+    }
+
+    protected virtual void Constructor()
+    {
+        BoxCollider col = gameObject.AddComponent(typeof(BoxCollider)) as BoxCollider;
     }
 
     public void setArrayCoords(int[] arrayPos)
