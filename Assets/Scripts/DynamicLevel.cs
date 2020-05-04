@@ -69,6 +69,10 @@ public class DynamicLevel : MonoBehaviour
         {
             Tile tileComp = output.AddComponent(typeof(TileDoor)) as TileDoor;
         }
+        else if (type == '!')
+        {
+            Tile tileComp = output.AddComponent(typeof(TileButton)) as TileButton;
+        }
 
         return output;
     }
