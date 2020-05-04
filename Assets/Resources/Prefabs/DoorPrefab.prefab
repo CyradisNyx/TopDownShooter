@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 376721762854343804}
   - component: {fileID: 376721762854343807}
   - component: {fileID: 376721762854343806}
+  - component: {fileID: 2767915812914366761}
   m_Layer: 0
   m_Name: DoorPrefab
   m_TagString: Untagged
@@ -94,3 +95,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &2767915812914366761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376721762854343793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c7adc10794ad84ca69c3397f718496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
