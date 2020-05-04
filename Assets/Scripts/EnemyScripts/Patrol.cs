@@ -8,6 +8,7 @@ public class Patrol : MonoBehaviour
     public Vector3 pointB;
     public UnityEngine.AI.NavMeshAgent agent;
     public float rotationSpeed;
+    public float viewDistance;
 
     protected bool toA; // if true; path to A, otherwise path to B
 
@@ -21,6 +22,20 @@ public class Patrol : MonoBehaviour
         if (similarVector3(transform.position, pointB))
         {
             this.toA = true;
+        }
+
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, viewDistance))
+        {
+            if (hitInfo.collider.CompareTag("Player"))
+            {
+                Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+            } else
+            {
+                Debug.DrawLine(transform.position, hitInfo.point, Color.white);
+            }
+        } else {
+            Debug.DrawLine(transform.position, transform.position + transform.forward * viewDistance, Color.green);
         }
     }
 
