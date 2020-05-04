@@ -13,5 +13,6 @@ public class TileWall : Tile
         base.Constructor();
         wallPrefab = Resources.Load<GameObject>(wallFile);
         wallPrefab = Instantiate(wallPrefab, gameObject.transform.position, Quaternion.identity);
+        wallPrefab.transform.SetParent(this.gameObject.transform);
     }
 }
