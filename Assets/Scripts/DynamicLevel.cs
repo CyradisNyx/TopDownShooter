@@ -41,8 +41,6 @@ public class DynamicLevel : MonoBehaviour
 
             for (int z = 0; z < levelZ; z++)
             {
-                Debug.Log(x + "," + z);
-                Debug.Log(strings[x][z]);
                 myTiles[x, z] = TileMaker(strings[x][z], new Vector3(x, 0, z));
             }
         }     

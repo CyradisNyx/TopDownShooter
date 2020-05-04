@@ -14,7 +14,7 @@ public class Tile : MonoBehaviour
     {
         if (MaterialFile == null)
         {
-            throw new Exception("TileMaterial not found");
+            //throw new Exception("TileMaterial not found");
         }
 
         material = Resources.Load<Material>(MaterialFile);
