@@ -8,14 +8,15 @@ public class PatrolBehaviour : StateMachineBehaviour
     public Vector3 pointA;
     public Vector3 pointB;
     public NavMeshAgent agent;
-    public float rotationSpeed;
     public float viewDistance;
+    public float walkSpeed;
 
     protected bool toA; // if true; path to A, otherwise path to B
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         this.agent = animator.gameObject.GetComponent<NavMeshAgent>();
+        agent.speed = walkSpeed;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -37,7 +38,7 @@ public class PatrolBehaviour : StateMachineBehaviour
             if (hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 Debug.DrawLine(animator.transform.position, hitInfo.point, Color.red);
-                // Start aggroing, actively hunt player
+                animator.SetBool("isHunting", true);
             }
             else
             {
@@ -73,22 +74,4 @@ public class PatrolBehaviour : StateMachineBehaviour
         float fudge = 0.01f; // 1 decimal place
         return ((float1 + fudge) > float2) && ((float1 - fudge) < float2);
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }
