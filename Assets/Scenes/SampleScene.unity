@@ -551,7 +551,7 @@ MonoBehaviour:
   pointB: {x: 10, y: 1, z: 11.5}
   agent: {fileID: 942062695}
   rotationSpeed: 5
-  viewDistance: 3
+  viewDistance: 4
 --- !u!195 &942062695
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 1989208977}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

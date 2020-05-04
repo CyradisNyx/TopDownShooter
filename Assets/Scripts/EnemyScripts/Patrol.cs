@@ -27,7 +27,7 @@ public class Patrol : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, viewDistance))
         {
-            if (hitInfo.collider.CompareTag("Player"))
+            if (hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 Debug.DrawLine(transform.position, hitInfo.point, Color.red);
             } else
