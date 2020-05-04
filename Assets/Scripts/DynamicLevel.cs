@@ -25,8 +25,8 @@ public class DynamicLevel : MonoBehaviour
             fileContents[i] = fileContents[i].Remove(fileContents[i].Length - 1);
         }
 
-        levelX = fileContents[0].Length;
-        levelZ = fileContents.Length;
+        levelZ = fileContents[0].Length;
+        levelX = fileContents.Length;
 
         return fileContents;
     }
