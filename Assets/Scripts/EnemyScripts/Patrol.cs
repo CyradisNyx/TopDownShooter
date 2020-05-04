@@ -7,6 +7,7 @@ public class Patrol : MonoBehaviour
     public Vector3 pointA;
     public Vector3 pointB;
     public UnityEngine.AI.NavMeshAgent agent;
+    public float rotationSpeed;
 
     protected bool toA; // if true; path to A, otherwise path to B
 
