@@ -10,10 +10,13 @@ public class Gun : MonoBehaviour
     public virtual float damage { get; set; }
     public virtual float range { get; set; }
     public GameObject player;
+    public GameObject playerGun;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        playerGun = GameObject.Find("GunPoint");
         gunSprite = Resources.Load<Sprite>(SpriteFile);
         GetComponent<Image>().sprite = gunSprite;
 

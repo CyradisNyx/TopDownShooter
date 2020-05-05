@@ -5,18 +5,21 @@ using UnityEngine;
 public class BasicGun : Gun
 {
     public override string SpriteFile { get { return "Sprites/shittygun"; } }
-    public override float damage { get { return 2f; } }
-    public override float range { get { return 12f; } }
+    string BulletFile = "Prefabs/BulletPrefab";
+    public override float range { get { return 5f; } }
 
     public override void OnClick(Vector3 mousePos)
     {
         Vector3 direction = (mousePos - player.transform.position).normalized;
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(player.transform.position, direction, out hitInfo, range))
+        if (Physics.Raycast(playerGun.transform.position, direction, out hitInfo, range))
         {
-            Debug.DrawLine(player.transform.position, hitInfo.point, Color.white, 5);
+            Debug.DrawLine(playerGun.transform.position, hitInfo.point, Color.white, 5);
 
         }
+
+        GameObject bullet = Resources.Load<GameObject>(BulletFile);
+        GameObject currBullet = Instantiate(bullet, playerGun.transform.position, playerGun.transform.rotation);
     }
 }
