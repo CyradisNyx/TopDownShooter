@@ -15,8 +15,10 @@ public class PatrolBehaviour : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("patrolling");
         this.agent = animator.gameObject.GetComponent<NavMeshAgent>();
         agent.speed = walkSpeed;
+        agent.destination = pointA;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
