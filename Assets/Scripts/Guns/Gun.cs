@@ -15,11 +15,15 @@ public class Gun : MonoBehaviour
         gunSprite = Resources.Load<Sprite>(SpriteFile);
         GetComponent<Image>().sprite = gunSprite;
 
+        if (transform.parent.name == "LeftGun")
+        {
+            EventMaster.Instance.onLeftClick += OnClick;
+        }
+        else if (transform.parent.name == "RightGun")
+        {
+            EventMaster.Instance.onRightClick += OnClick;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public virtual void OnClick() { }
 }

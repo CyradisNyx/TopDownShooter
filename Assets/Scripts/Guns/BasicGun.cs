@@ -5,4 +5,9 @@ using UnityEngine;
 public class BasicGun : Gun
 {
     public override string SpriteFile { get { return "Sprites/shittygun"; } }
+
+    public override void OnClick()
+    {
+        //Shoot stuff
+    }
 }
