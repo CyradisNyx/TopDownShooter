@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour
 {
     public Sprite gunSprite;
     public virtual string SpriteFile { get; set; }
-
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()

@@ -8,6 +8,6 @@ public class BasicGun : Gun
 
     public override void OnClick(Vector3 mousePos)
     {
-        //Shoot stuff
+        Debug.DrawLine(player.transform.position, mousePos, Color.white, 5);
     }
 }
