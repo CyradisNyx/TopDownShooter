@@ -46,4 +46,13 @@ public class EventMaster : MonoBehaviour
             onRightClick(mousePos);
         }
     }
+
+    public event Action<GameObject> onBulletImpact;
+    public void BulletImpact(GameObject coll)
+    {
+        if (onBulletImpact != null)
+        {
+            onBulletImpact(coll);
+        }
+    }
 }

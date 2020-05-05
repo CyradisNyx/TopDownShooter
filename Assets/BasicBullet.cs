@@ -5,15 +5,16 @@ using UnityEngine;
 public class BasicBullet : MonoBehaviour
 {
     float damage = 2f;
-    float speed = 25f;
+    float speed = 15f;
 
     public void Update()
     {
         transform.position += transform.forward * Time.deltaTime * speed;
     }
 
-    void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider coll)
     {
+        EventMaster.Instance.BulletImpact(coll.gameObject);
         Destroy(gameObject);
     }
 }
