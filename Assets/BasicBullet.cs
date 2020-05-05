@@ -12,8 +12,8 @@ public class BasicBullet : MonoBehaviour
         transform.position += transform.forward * Time.deltaTime * speed;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

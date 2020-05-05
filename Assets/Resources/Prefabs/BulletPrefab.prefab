@@ -107,7 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c888639f743e774e9ffed389017959d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: {x: 0, y: 0, z: 0}
 --- !u!54 &4700415522298123463
 Rigidbody:
   m_ObjectHideFlags: 0
