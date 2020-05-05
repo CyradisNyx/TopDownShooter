@@ -29,21 +29,21 @@ public class EventMaster : MonoBehaviour
         }
     }
 
-    public event Action onLeftClick;
-    public void LeftClick()
+    public event Action<Vector3> onLeftClick;
+    public void LeftClick(Vector3 mousePos)
     {
         if (onLeftClick != null)
         {
-            onLeftClick();
+            onLeftClick(mousePos);
         }
     }
 
-    public event Action onRightClick;
-    public void RightClick()
+    public event Action<Vector3> onRightClick;
+    public void RightClick(Vector3 mousePos)
     {
         if (onRightClick != null)
         {
-            onRightClick();
+            onRightClick(mousePos);
         }
     }
 }

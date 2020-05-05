@@ -25,5 +25,5 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public virtual void OnClick() { }
+    public virtual void OnClick(Vector3 mousePos) { }
 }

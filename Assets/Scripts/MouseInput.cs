@@ -20,11 +20,11 @@ public class MouseInput : MonoBehaviour
         // Get mouse clicks and send event
         if (Input.GetMouseButtonDown(0))
         {
-            EventMaster.Instance.LeftClick();
+            EventMaster.Instance.LeftClick(hit.point);
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            EventMaster.Instance.RightClick();
+            EventMaster.Instance.RightClick(hit.point);
         }
     }
 }
