@@ -28,4 +28,22 @@ public class EventMaster : MonoBehaviour
             onButtonPress(collisionBoi);
         }
     }
+
+    public event Action onLeftClick;
+    public void LeftClick()
+    {
+        if (onLeftClick != null)
+        {
+            onLeftClick();
+        }
+    }
+
+    public event Action onRightClick;
+    public void RightClick()
+    {
+        if (onRightClick != null)
+        {
+            onRightClick();
+        }
+    }
 }

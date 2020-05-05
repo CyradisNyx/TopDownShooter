@@ -73,7 +73,7 @@ public class PatrolBehaviour : StateMachineBehaviour
 
     bool floatSimilar(float float1, float float2)
     {
-        float fudge = 0.01f; // 1 decimal place
+        float fudge = 0.1f;
         return ((float1 + fudge) > float2) && ((float1 - fudge) < float2);
     }
 }
