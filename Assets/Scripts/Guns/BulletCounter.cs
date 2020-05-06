@@ -27,10 +27,17 @@ public class BulletCounter : MonoBehaviour
     void Update()
     {
         bulletCount.text = bulletsLeft.ToString();
+        if (bulletsLeft == 0)
+        {
+            bulletCount.enabled = false;
+        }
     }
 
     public void OnClick(Vector3 mousePos)
     {
-        bulletsLeft -= 1;
+        if (bulletsLeft > 0)
+        {
+            bulletsLeft -= 1;
+        }
     }
 }
