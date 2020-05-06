@@ -124,8 +124,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   playerTarget: {fileID: 0}
   walkSpeed: 3
-  attackRange: 6
-  viewRange: 6
+  attackRange: 40
+  viewRange: 20
 --- !u!114 &-819704904427850847
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   pointA: {x: 10, y: 1, z: 1.75}
   pointB: {x: 10, y: 1, z: 11.25}
   agent: {fileID: 0}
-  viewDistance: 4
+  viewDistance: 25
   walkSpeed: 2
 --- !u!91 &9100000
 AnimatorController:
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35821071eb2cad4694e20eaa259389b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 12
+  attackRange: 45
   gunPoint: {fileID: 0}
   BulletFile: Prefabs/BulletPrefab
 --- !u!1101 &6443635571070655090
