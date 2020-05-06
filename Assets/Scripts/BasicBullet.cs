@@ -9,7 +9,9 @@ public class BasicBullet : MonoBehaviour
 
     public void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * speed;
+        Vector3 temp = transform.forward * Time.deltaTime * speed;
+        temp.y = 0f;
+        transform.position += temp;
     }
 
     void OnCollisionEnter(Collision coll)

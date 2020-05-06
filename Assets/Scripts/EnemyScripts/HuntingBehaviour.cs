@@ -7,8 +7,8 @@ public class HuntingBehaviour : StateMachineBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public GameObject playerTarget;
     public float walkSpeed;
-    public float attackRangeStart;
-    public float attackRangeEnd;
+    public float attackRange;
+    public float viewRange;
 
     protected bool lockOn;
     protected bool rotatedCheck;
@@ -35,7 +35,7 @@ public class HuntingBehaviour : StateMachineBehaviour
 
         // Cast a ray forward to check in range for Player
         RaycastHit hitInfo;
-        if (Physics.Raycast(animator.transform.position, animator.transform.forward, out hitInfo, attackRangeEnd))
+        if (Physics.Raycast(animator.transform.position, animator.transform.forward, out hitInfo, viewRange))
         {
             lastSeen = playerTarget.transform.position;
 
@@ -43,6 +43,13 @@ public class HuntingBehaviour : StateMachineBehaviour
             if (hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 Debug.DrawLine(animator.transform.position, hitInfo.point, Color.red);
+
+                // Check against attack range
+                if (hitInfo.distance <= attackRange)
+                {
+                    Debug.Log("in range");
+                    animator.SetBool("inRange", true);
+                }
             }
             // If hit something else
             else
@@ -53,7 +60,7 @@ public class HuntingBehaviour : StateMachineBehaviour
         // All clear
         else
         {
-            Debug.DrawLine(animator.transform.position, animator.transform.position + animator.transform.forward * attackRangeEnd, Color.green);
+            Debug.DrawLine(animator.transform.position, animator.transform.position + animator.transform.forward * viewRange, Color.green);
         }
 
         agent.destination = lastSeen;

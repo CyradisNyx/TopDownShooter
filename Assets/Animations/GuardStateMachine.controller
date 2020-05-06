@@ -40,7 +40,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4804230254727215195}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 5775951113980733661}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -123,8 +124,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   playerTarget: {fileID: 0}
   walkSpeed: 4.5
-  attackRangeStart: 3
-  attackRangeEnd: 6
+  attackRange: 3
+  viewRange: 6
 --- !u!114 &-819704904427850847
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +227,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &5775951113980733661
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35821071eb2cad4694e20eaa259389b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &6443635571070655090
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
