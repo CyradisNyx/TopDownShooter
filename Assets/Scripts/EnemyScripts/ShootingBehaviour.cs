@@ -1,11 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShootingBehaviour : StateMachineBehaviour
 {
     public float attackRange;
     public GameObject gunPoint;
+    public string BulletFile = "Prefabs/BulletPrefab";
+
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        this.gunPoint = animator.transform.GetChild(0).gameObject;
+        animator.GetComponent<NavMeshAgent>().isStopped = true;
+    }
+
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<NavMeshAgent>().isStopped = false;
+    }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -16,7 +29,7 @@ public class ShootingBehaviour : StateMachineBehaviour
             if (hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 //hit player
-                this.Shoot();
+                this.Shoot(hitInfo);
             }
             else
             {
@@ -32,8 +45,12 @@ public class ShootingBehaviour : StateMachineBehaviour
 
     }
 
-    public void Shoot()
+    public void Shoot(RaycastHit hitInfo)
     {
 
+        Debug.DrawLine(gunPoint.transform.position, hitInfo.point, Color.white, 5);
+
+        GameObject bullet = Resources.Load<GameObject>(BulletFile);
+        GameObject currBullet = Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
     }
 }

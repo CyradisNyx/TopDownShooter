@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        playerGun = GameObject.Find("GunPoint");
+        playerGun = player.transform.GetChild(0).gameObject;
         gunSprite = Resources.Load<Sprite>(SpriteFile);
         GetComponent<Image>().sprite = gunSprite;
 

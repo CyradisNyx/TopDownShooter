@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   playerTarget: {fileID: 0}
-  walkSpeed: 4.5
-  attackRange: 3
+  walkSpeed: 3
+  attackRange: 6
   viewRange: 6
 --- !u!114 &-819704904427850847
 MonoBehaviour:
@@ -239,7 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35821071eb2cad4694e20eaa259389b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3
+  attackRange: 6
+  gunPoint: {fileID: 0}
+  BulletFile: Prefabs/BulletPrefab
 --- !u!1101 &6443635571070655090
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
