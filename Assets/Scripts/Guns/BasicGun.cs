@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasicGun : Gun
 {
@@ -11,6 +12,7 @@ public class BasicGun : Gun
 
     public override void OnClick(Vector3 mousePos)
     {
+        if (!canShoot) { return; }
         Vector3 direction = (mousePos - player.transform.position).normalized;
 
         RaycastHit hitInfo;
@@ -22,5 +24,11 @@ public class BasicGun : Gun
 
         GameObject bullet = Resources.Load<GameObject>(BulletFile);
         GameObject currBullet = Instantiate(bullet, playerGun.transform.position, playerGun.transform.rotation);
+    }
+
+    void OnDisable()
+    {
+        gameObject.GetComponent<Image>().enabled = false;
+        canShoot = false;
     }
 }

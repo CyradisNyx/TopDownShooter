@@ -7,6 +7,7 @@ public class BulletCounter : MonoBehaviour
 {
     int bulletsLeft;
     public Text bulletCount;
+    public Gun gunComponent;
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +23,12 @@ public class BulletCounter : MonoBehaviour
 
         this.bulletCount = gameObject.GetComponent<Text>();
         this.bulletsLeft = transform.parent.GetChild(0).GetComponent<Gun>().bullets;
+        this.gunComponent = transform.parent.GetChild(0).GetComponent<Gun>();
     }
 
     void Update()
     {
         bulletCount.text = bulletsLeft.ToString();
-        if (bulletsLeft == 0)
-        {
-            bulletCount.enabled = false;
-        }
     }
 
     public void OnClick(Vector3 mousePos)
@@ -38,6 +36,11 @@ public class BulletCounter : MonoBehaviour
         if (bulletsLeft > 0)
         {
             bulletsLeft -= 1;
+            if (bulletsLeft == 0)
+            {
+                //gunComponent.canShoot = false;
+                gunComponent.enabled = false;
+            }
         }
     }
 }

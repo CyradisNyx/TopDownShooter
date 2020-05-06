@@ -13,6 +13,8 @@ public class Gun : MonoBehaviour
     public GameObject player;
     public GameObject playerGun;
 
+    public bool canShoot = true;
+
     // Start is called before the first frame update
     void Start()
     {
