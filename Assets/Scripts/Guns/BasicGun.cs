@@ -7,6 +7,7 @@ public class BasicGun : Gun
     public override string SpriteFile { get { return "Sprites/shittygun"; } }
     string BulletFile = "Prefabs/BulletPrefab";
     public override float range { get { return 5f; } }
+    public override int bullets { get { return 20; } }
 
     public override void OnClick(Vector3 mousePos)
     {

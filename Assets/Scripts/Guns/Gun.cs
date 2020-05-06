@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     public virtual string SpriteFile { get; set; }
     public virtual float damage { get; set; }
     public virtual float range { get; set; }
+    public virtual int bullets { get; set; }
     public GameObject player;
     public GameObject playerGun;
 
