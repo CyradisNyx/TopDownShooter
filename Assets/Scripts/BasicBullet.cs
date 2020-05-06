@@ -12,9 +12,9 @@ public class BasicBullet : MonoBehaviour
         transform.position += transform.forward * Time.deltaTime * speed;
     }
 
-    void OnTriggerEnter(Collider coll)
+    void OnCollisionEnter(Collision coll)
     {
-        EventMaster.Instance.BulletImpact(coll.gameObject);
+        EventMaster.Instance.BulletImpact(damage, coll.gameObject);
         Destroy(gameObject);
     }
 }

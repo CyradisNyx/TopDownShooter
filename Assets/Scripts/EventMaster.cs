@@ -47,12 +47,12 @@ public class EventMaster : MonoBehaviour
         }
     }
 
-    public event Action<GameObject> onBulletImpact;
-    public void BulletImpact(GameObject coll)
+    public event Action<float, GameObject> onBulletImpact;
+    public void BulletImpact(float damage, GameObject collision)
     {
         if (onBulletImpact != null)
         {
-            onBulletImpact(coll);
+            onBulletImpact(damage, collision);
         }
     }
 }

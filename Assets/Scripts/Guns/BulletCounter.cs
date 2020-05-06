@@ -31,7 +31,6 @@ public class BulletCounter : MonoBehaviour
 
     public void OnClick(Vector3 mousePos)
     {
-        Debug.Log("click");
         bulletsLeft -= 1;
     }
 }
