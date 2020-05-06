@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class ShootingBehaviour : StateMachineBehaviour
 {
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    public float attackRange;
+    public GameObject gunPoint;
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // check still in range
+        RaycastHit hitInfo;
+        if (Physics.Raycast(animator.transform.position, animator.transform.forward, out hitInfo, attackRange))
+        {
+            if (hitInfo.collider.gameObject.CompareTag("Player"))
+            {
+                //hit player
+                this.Shoot();
+            }
+            else
+            {
+                // hit something that's not the player
+                animator.SetBool("inRange", false);
+            }
+        }
+        else
+        {
+            // didnt hit anything
+            animator.SetBool("inRange", false);
+        }
+
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    public void Shoot()
+    {
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+    }
 }

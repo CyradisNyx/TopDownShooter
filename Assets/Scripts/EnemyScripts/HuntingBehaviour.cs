@@ -68,6 +68,8 @@ public class HuntingBehaviour : StateMachineBehaviour
         // if at last place
         if (similarVector3(animator.transform.position, lastSeen))
         {
+            // make him turn and check for the player here
+
             // go back to patrolling
             animator.SetBool("isHunting", false);
         }
