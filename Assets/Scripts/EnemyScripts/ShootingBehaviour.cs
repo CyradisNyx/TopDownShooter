@@ -47,7 +47,6 @@ public class ShootingBehaviour : StateMachineBehaviour
 
     public void Shoot(RaycastHit hitInfo)
     {
-
         Debug.DrawLine(gunPoint.transform.position, hitInfo.point, Color.white, 5);
 
         GameObject bullet = Resources.Load<GameObject>(BulletFile);
