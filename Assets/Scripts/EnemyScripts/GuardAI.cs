@@ -131,7 +131,7 @@ public class GuardAI : MonoBehaviour
         public float viewDistance = 15f;
         public float attackDistance = 10f;
 
-        private Vector3 lastSeen;
+        public Vector3 lastSeen;
         private GameObject parent;
         private GuardAI sm;
 
@@ -192,6 +192,10 @@ public class GuardAI : MonoBehaviour
 
     public class Scan
     {
+        public float turnDegrees = 10f;
+        public float attackDistance = 10f;
+        public float numRays;
+
         private GameObject parent;
         private GuardAI sm;
 
@@ -199,6 +203,7 @@ public class GuardAI : MonoBehaviour
         {
             this.parent = parent;
             this.sm = parent.GetComponent<GuardAI>();
+            this.numRays = 360f / turnDegrees;
         }
 
         public void Update()
@@ -206,8 +211,28 @@ public class GuardAI : MonoBehaviour
             sm.agent.isStopped = true;
 
             // Spin around and check each ray
+            if (DoScan()) { sm._state = GuardAI.State.StateHunt; }
+            else { sm._state = GuardAI.State.StatePatrol; }
 
             sm.agent.isStopped = false;
+        }
+
+        public bool DoScan()
+        {
+            // return true if find player in radius, else false
+            // move player while scanning, so that if true, will be facing player when back to hunt
+            // maybe also force set Hunt's lastSeen
+            for (int i = 0; i < numRays; i++)
+            {
+                if (sm.SeePlayer(attackDistance))
+                {
+                    sm.hunt.lastSeen = GameObject.Find("Player").transform.position;
+                    return true;
+                }
+                parent.transform.Rotate(0, turnDegrees, 0);
+            }
+
+            return false;
         }
     }
 }
