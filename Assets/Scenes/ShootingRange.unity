@@ -1052,10 +1052,11 @@ GameObject:
   - component: {fileID: 1297179869}
   - component: {fileID: 1297179868}
   - component: {fileID: 1297179867}
-  - component: {fileID: 1297179866}
   - component: {fileID: 1297179865}
   - component: {fileID: 1297179864}
   - component: {fileID: 1297179863}
+  - component: {fileID: 1297179866}
+  - component: {fileID: 1297179870}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -1071,7 +1072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297179861}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.902737, y: 92.41695, z: -35.180103}
+  m_LocalPosition: {x: 21.902737, y: 92.57, z: -35.180103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 747065733}
@@ -1208,6 +1209,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297179861}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1297179870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297179861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054d2540f96e59a49ad79d5ba307a4f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1430676886
 GameObject:
   m_ObjectHideFlags: 0
