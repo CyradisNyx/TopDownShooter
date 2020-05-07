@@ -58,6 +58,11 @@ public class GuardAI : MonoBehaviour
         }
     }
 
+    public void OnCollisionEnter(Collision coll)
+    {
+        this._state = State.StateScan;
+    }
+
     bool SimilarVector3(Vector3 a, Vector3 b)
     {
         if (FloatSimilar(a.x, b.x) == false) { return false; }
