@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class DeathBurst : MonoBehaviour
 {
-    // Start is called before the first frame update
+    string particlePath = "Prefabs/DeathBurst";
+    ParticleSystem deathParticles;
+
     void Start()
     {
         EventMaster.Instance.onDeath += Death;
+        deathParticles = Resources.Load<ParticleSystem>(particlePath);
     }
 
     public void Death(GameObject victim)
     {
         if (victim != this.gameObject) { return; }
 
+        Instantiate(deathParticles, transform.position, Quaternion.LookRotation(Vector3.up));
         Destroy(this.gameObject);
     }
 }
