@@ -20,7 +20,7 @@ public class TakeDamage : MonoBehaviour
             health -= damage;
             if (floatSimilar(health, 0f))
             {
-                Destroy(this.gameObject);
+                EventMaster.Instance.Death(this.gameObject);
             }
         }
     }
