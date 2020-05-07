@@ -18,9 +18,9 @@ public class GuardAI : MonoBehaviour
     NavMeshAgent agent;
 
     public Patrol patrol;
-    public Shoot shoot = new Shoot();
-    public Hunt hunt = new Hunt();
-    public Scan scan = new Scan();
+    public Shoot shoot;
+    public Hunt hunt;
+    public Scan scan;
 
     public void Start()
     {
@@ -28,17 +28,18 @@ public class GuardAI : MonoBehaviour
         this.agent = gameObject.GetComponent<NavMeshAgent>();
 
         this.patrol = new Patrol(this.gameObject);
+        this.hunt = new Hunt(this.gameObject);
+        this.shoot = new Shoot(this.gameObject);
+        this.scan = new Scan(this.gameObject);
     }
 
     public void Update()
     {
         // Check for being stuck, and reset to Patrol
-        /**
         if (!agent.hasPath && agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
         {
             this._state = State.StatePatrol;
         }
-    **/
 
         switch (_state)
         {
@@ -49,7 +50,7 @@ public class GuardAI : MonoBehaviour
                 shoot.Update();
                 break;
             case State.StateHunt:
-                shoot.Update();
+                hunt.Update();
                 break;
             case State.StateScan:
                 scan.Update();
@@ -57,22 +58,22 @@ public class GuardAI : MonoBehaviour
         }
     }
 
-    bool similarVector3(Vector3 a, Vector3 b)
+    bool SimilarVector3(Vector3 a, Vector3 b)
     {
-        if (floatSimilar(a.x, b.x) == false) { return false; }
-        if (floatSimilar(a.y, b.y) == false) { return false; }
-        if (floatSimilar(a.z, b.z) == false) { return false; }
+        if (FloatSimilar(a.x, b.x) == false) { return false; }
+        if (FloatSimilar(a.y, b.y) == false) { return false; }
+        if (FloatSimilar(a.z, b.z) == false) { return false; }
 
         return true;
     }
 
-    bool floatSimilar(float float1, float float2)
+    bool FloatSimilar(float float1, float float2)
     {
         float fudge = 0.1f;
         return ((float1 + fudge) > float2) && ((float1 - fudge) < float2);
     }
 
-    bool seePlayer(float range)
+    bool SeePlayer(float range)
     {
         RaycastHit hitInfo;
 
@@ -92,7 +93,6 @@ public class GuardAI : MonoBehaviour
         return false;
     }
 
-    [System.Serializable]
     public class Patrol
     {
         public Vector3 pointA = new Vector3 ( 10, 1, 5 );
@@ -114,41 +114,100 @@ public class GuardAI : MonoBehaviour
         public void Update()
         {
             // If at pointA/B, reverse direction to the other
-            if (sm.similarVector3(sm.transform.position, pointA)) { this.toA = false; }
-            if (sm.similarVector3(sm.transform.position, pointB)) { this.toA = true; }
+            if (sm.SimilarVector3(sm.transform.position, pointA)) { this.toA = false; }
+            if (sm.SimilarVector3(sm.transform.position, pointB)) { this.toA = true; }
 
             // If guard can see player, change to StateHunt
-            if (sm.seePlayer(viewDistance)) { sm._state = GuardAI.State.StateHunt; }
+            if (sm.SeePlayer(viewDistance)) { sm._state = GuardAI.State.StateHunt; }
 
             // Move to pointA if toA else pointB
             sm.agent.SetDestination(toA ? pointA : pointB);
         }
     }
 
-    [System.Serializable]
     public class Hunt
     {
+        public float walkSpeed = 5f;
+        public float viewDistance = 15f;
+        public float attackDistance = 10f;
+
+        private Vector3 lastSeen;
+        private GameObject parent;
+        private GuardAI sm;
+
+        public Hunt(GameObject parent)
+        {
+            this.parent = parent;
+            this.sm = parent.GetComponent<GuardAI>();
+        }
+
         public void Update()
         {
+            // If guard can see player, save their location
+            if (sm.SeePlayer(viewDistance))
+            {
+                this.lastSeen = GameObject.Find("Player").transform.position;
 
+                if (sm.SeePlayer(attackDistance)) { sm._state = GuardAI.State.StateShoot; }
+                else { sm.agent.SetDestination(lastSeen); }
+            }
+            else
+            {
+                if (sm.SimilarVector3(sm.transform.position, lastSeen)) { sm._state = GuardAI.State.StateScan; }
+                else { sm.agent.SetDestination(lastSeen); }
+            }
         }
     }
 
-    [System.Serializable]
     public class Shoot
     {
+        public float attackDistance = 10f;
+        public string bulletPrefab = "Prefabs/BulletPrefab";
+
+        private GameObject parent;
+        private GameObject gunPoint;
+        private GuardAI sm;
+
+        public Shoot(GameObject parent)
+        {
+            this.parent = parent;
+            this.gunPoint = parent.transform.GetChild(0).gameObject;
+            this.sm = parent.GetComponent<GuardAI>();
+        }
+
         public void Update()
         {
+            sm.agent.isStopped = true;
 
+            if (sm.SeePlayer(attackDistance))
+            {
+                GameObject bullet = Resources.Load<GameObject>(bulletPrefab);
+                Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
+            }
+            else { sm._state = GuardAI.State.StateHunt; }
+
+            sm.agent.isStopped = false;
         }
     }
 
-    [System.Serializable]
     public class Scan
     {
+        private GameObject parent;
+        private GuardAI sm;
+
+        public Scan(GameObject parent)
+        {
+            this.parent = parent;
+            this.sm = parent.GetComponent<GuardAI>();
+        }
+
         public void Update()
         {
+            sm.agent.isStopped = true;
 
+            // Spin around and check each ray
+
+            sm.agent.isStopped = false;
         }
     }
 }
