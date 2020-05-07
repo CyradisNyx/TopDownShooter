@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   playerTarget: {fileID: 0}
-  walkSpeed: 3
+  walkSpeed: 5
   attackRange: 40
   viewRange: 20
 --- !u!114 &-819704904427850847
