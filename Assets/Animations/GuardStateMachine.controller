@@ -124,7 +124,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   playerTarget: {fileID: 0}
   walkSpeed: 3
-  attackRange: 40
+  attackRange: 38
   viewRange: 20
 --- !u!114 &-819704904427850847
 MonoBehaviour:
