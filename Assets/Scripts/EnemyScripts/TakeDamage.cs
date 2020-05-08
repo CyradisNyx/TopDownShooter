@@ -18,6 +18,7 @@ public class TakeDamage : MonoBehaviour
         if (coll.name == this.gameObject.name)
         {
             health -= damage;
+
             if (floatSimilar(health, 0f))
             {
                 EventMaster.Instance.Death(this.gameObject);
