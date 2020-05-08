@@ -55,4 +55,13 @@ public class EventMaster : MonoBehaviour
             onBulletImpact(damage, collision);
         }
     }
+
+    public event Action<GameObject> onDeath;
+    public void Death(GameObject victim)
+    {
+        if (onDeath != null)
+        {
+            onDeath(victim);
+        }
+    }
 }

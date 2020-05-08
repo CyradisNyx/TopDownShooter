@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6081885549872759316}
   - component: {fileID: 3589811637775015383}
   - component: {fileID: 8433580226295902820}
-  - component: {fileID: 4700415522298123463}
+  - component: {fileID: 3691333196025480965}
   m_Layer: 0
   m_Name: BulletPrefab
   m_TagString: Untagged
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef34ea5fcf30adb49a48ef94a124c6e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c888639f743e774e9ffed389017959d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &4700415522298123463
+--- !u!54 &3691333196025480965
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,8 +118,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 0
   m_CollisionDetection: 0

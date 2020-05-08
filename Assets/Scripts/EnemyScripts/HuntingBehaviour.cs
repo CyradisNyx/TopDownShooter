@@ -10,8 +10,6 @@ public class HuntingBehaviour : StateMachineBehaviour
     public float attackRange;
     public float viewRange;
 
-    protected bool lockOn;
-    protected bool rotatedCheck;
     protected Vector3 lastSeen;
     protected int spinCount = 0;
 
@@ -21,6 +19,7 @@ public class HuntingBehaviour : StateMachineBehaviour
         Debug.Log("hunting");
         this.agent = animator.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = walkSpeed;
+        agent.isStopped = false;
 
         this.playerTarget = GameObject.Find("Player");
     }
@@ -33,11 +32,24 @@ public class HuntingBehaviour : StateMachineBehaviour
             animator.SetBool("isHunting", false);
         }
 
-        // Cast a ray forward to check in range for Player
+        bool canSee = canSeePlayer(animator);
+        agent.destination = lastSeen;
+
+        if (!canSee)
+        {
+            animator.SetBool("isHunting", false);
+        }
+    }
+
+    protected bool canSeePlayer(Animator animator)
+    {
+        // Return if can see player, else false
         RaycastHit hitInfo;
+
+        // Cast Ray. Current location, forwards direction, hitInfo output, viewing distance
         if (Physics.Raycast(animator.transform.position, animator.transform.forward, out hitInfo, viewRange))
         {
-            lastSeen = playerTarget.transform.position;
+            this.lastSeen = hitInfo.point;
 
             // If hit player
             if (hitInfo.collider.gameObject.CompareTag("Player"))
@@ -50,6 +62,8 @@ public class HuntingBehaviour : StateMachineBehaviour
                     Debug.Log("in range");
                     animator.SetBool("inRange", true);
                 }
+
+                return true;
             }
             // If hit something else
             else
@@ -63,16 +77,7 @@ public class HuntingBehaviour : StateMachineBehaviour
             Debug.DrawLine(animator.transform.position, animator.transform.position + animator.transform.forward * viewRange, Color.green);
         }
 
-        agent.destination = lastSeen;
-
-        // if at last place
-        if (similarVector3(animator.transform.position, lastSeen))
-        {
-            // make him turn and check for the player here
-
-            // go back to patrolling
-            animator.SetBool("isHunting", false);
-        }
+        return false;
     }
 
     protected bool similarVector3(Vector3 a, Vector3 b)

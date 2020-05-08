@@ -24,6 +24,12 @@ public class PatrolBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // This fucking idiot keeps getting stuck in corners, so this manually forces him into Patrol when that happens
+        if (!agent.hasPath && agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        {
+            animator.SetBool("isHunting", false);
+        }
+
         if (similarVector3(animator.transform.position, pointA))
         {
             this.toA = false;
