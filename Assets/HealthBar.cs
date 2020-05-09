@@ -20,6 +20,8 @@ public class HealthBar : MonoBehaviour
         }
 
         EventMaster.Instance.onBulletImpact += BulletImpact;
+        EventMaster.Instance.onPickup += Pickup;
+
         this.health = GameObject.Find("Player").GetComponent<TakeDamage>().health;
 
         UpdateBar();
@@ -30,6 +32,11 @@ public class HealthBar : MonoBehaviour
         if (coll.name != "Player") { return; }
         this.health -= damage;
 
+        UpdateBar();
+    }
+
+    public void Pickup(string type)
+    {
         UpdateBar();
     }
 
