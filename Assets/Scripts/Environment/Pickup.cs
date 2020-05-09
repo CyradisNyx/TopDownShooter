@@ -11,6 +11,7 @@ public class Pickup : MonoBehaviour
     public enum pickupTypes
     {
         BasicGun,
+        Health,
     }
     public pickupTypes type;
 
@@ -19,6 +20,11 @@ public class Pickup : MonoBehaviour
         if (type == pickupTypes.BasicGun)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/shittygun");
+        }
+
+        if (type == pickupTypes.Health)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/heart_full_pink");
         }
     }
 
@@ -35,6 +41,11 @@ public class Pickup : MonoBehaviour
         if (type == pickupTypes.BasicGun)
         {
             StartCoroutine(WhichGun("BasicGun"));
+        }
+
+        if (type == pickupTypes.BasicGun)
+        {
+            EventMaster.Instance.Pickup("Health");
         }
 
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;

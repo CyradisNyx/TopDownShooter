@@ -6,10 +6,15 @@ public class TakeDamage : MonoBehaviour
 {
     public float health;
 
+    float fullHealth;
+
     // Start is called before the first frame update
     void Start()
     {
         EventMaster.Instance.onBulletImpact += BulletImpact;
+        EventMaster.Instance.onPickup += Pickup;
+
+        fullHealth = health;
     }
 
     public void BulletImpact(float damage, GameObject coll)
@@ -23,6 +28,14 @@ public class TakeDamage : MonoBehaviour
             {
                 EventMaster.Instance.Death(this.gameObject);
             }
+        }
+    }
+
+    public void Pickup(string type)
+    {
+        if (type == "Health")
+        {
+            health = fullHealth;
         }
     }
 

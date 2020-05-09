@@ -193,6 +193,12 @@ public class GuardAI : MonoBehaviour
 
             sm.agent.isStopped = false;
         }
+
+        IEnumerator Wait(float seconds)
+        {
+            yield return new WaitForSecondsRealtime(seconds);
+            yield break;
+        }
     }
 
     public class Scan
