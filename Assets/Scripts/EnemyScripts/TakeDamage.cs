@@ -26,6 +26,11 @@ public class TakeDamage : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        EventMaster.Instance.onBulletImpact -= BulletImpact;
+    }
+
     bool floatSimilar(float float1, float float2)
     {
         float fudge = 0.1f; // 1 decimal place

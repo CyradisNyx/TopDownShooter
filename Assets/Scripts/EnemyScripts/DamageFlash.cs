@@ -33,6 +33,11 @@ public class DamageFlash : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        EventMaster.Instance.onBulletImpact -= BulletImpact;
+    }
+
     void BulletImpact(float damage, GameObject coll)
     {
         if (coll.name != this.gameObject.name) { return; }
