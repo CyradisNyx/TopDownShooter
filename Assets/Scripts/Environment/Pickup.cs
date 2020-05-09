@@ -19,7 +19,7 @@ public class Pickup : MonoBehaviour
     {
         if (type == pickupTypes.BasicGun)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/shittygun");
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Guns/StupidBasic");
         }
 
         if (type == pickupTypes.Health)
