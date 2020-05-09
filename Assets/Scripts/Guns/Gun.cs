@@ -22,9 +22,6 @@ public class Gun : MonoBehaviour
         playerGun = player.transform.GetChild(0).gameObject;
         gunSprite = Resources.Load<Sprite>(SpriteFile);
         GetComponent<Image>().sprite = gunSprite;
-        Color temp = GetComponent<Image>().color;
-        temp.a = 1;
-        GetComponent<Image>().color = temp;
 
         if (transform.parent.name == "LeftGun")
         {
