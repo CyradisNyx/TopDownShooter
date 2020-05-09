@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
-    public Sprite gunSprite;
+    Sprite gunSprite;
     public virtual string SpriteFile { get; set; }
     public virtual float damage { get; set; }
     public virtual float range { get; set; }

@@ -208,7 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb5f06dd6f0b2d4d8308e3d7aa5735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunSprite: {fileID: 0}
   player: {fileID: 798081400}
   playerGun: {fileID: 0}
   canShoot: 1
@@ -1636,9 +1635,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1930997045}
-  - component: {fileID: 1930997048}
   - component: {fileID: 1930997047}
   - component: {fileID: 1930997046}
+  - component: {fileID: 1930997048}
   m_Layer: 5
   m_Name: ActualGunObject
   m_TagString: Untagged
@@ -1711,10 +1710,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1930997044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb5f06dd6f0b2d4d8308e3d7aa5735e, type: 3}
+  m_Script: {fileID: 11500000, guid: a2f793a8832c8954abb804c7341906fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunSprite: {fileID: 0}
-  player: {fileID: 798081400}
-  playerGun: {fileID: 0}
-  canShoot: 1
