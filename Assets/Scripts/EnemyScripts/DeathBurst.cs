@@ -13,6 +13,7 @@ public class DeathBurst : MonoBehaviour
 
     public void Death(GameObject victim)
     {
+        Debug.Log("hi");
         if (victim != this.gameObject) { return; }
 
         Instantiate(deathParticles, transform.position, Quaternion.LookRotation(Vector3.up));

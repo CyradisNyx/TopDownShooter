@@ -14,6 +14,7 @@ public class FollowCam : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (target == null) { return; }
         Vector3 targetPos = target.transform.position;
         targetPos.x += xOffset;
         targetPos.y += yOffset;
