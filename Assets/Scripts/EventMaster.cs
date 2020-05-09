@@ -73,4 +73,13 @@ public class EventMaster : MonoBehaviour
             onPickup(type);
         }
     }
+
+    public event Action<string, string> onPickupGun;
+    public void PickupGun(string type, string whichSlot)
+    {
+        if (onPickupGun != null)
+        {
+            onPickupGun(type, whichSlot);
+        }
+    }
 }

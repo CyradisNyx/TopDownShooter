@@ -130,9 +130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 87431551}
-  - component: {fileID: 87431554}
   - component: {fileID: 87431553}
   - component: {fileID: 87431552}
+  - component: {fileID: 87431554}
   m_Layer: 5
   m_Name: ActualGunObject
   m_TagString: Untagged
@@ -205,12 +205,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 87431550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb5f06dd6f0b2d4d8308e3d7aa5735e, type: 3}
+  m_Script: {fileID: 11500000, guid: a2f793a8832c8954abb804c7341906fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 798081400}
-  playerGun: {fileID: 0}
-  canShoot: 1
 --- !u!1 &279319785
 GameObject:
   m_ObjectHideFlags: 0

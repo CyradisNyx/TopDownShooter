@@ -8,12 +8,14 @@ public class GunAssigner : MonoBehaviour
 
     void Start()
     {
-        EventMaster.Instance.onPickup += OnPickup;
+        EventMaster.Instance.onPickupGun += OnPickupGun;
         this.count = this.gameObject.transform.parent.Find("BulletCount").GetComponent<BulletCounter>();
     }
 
-    public void OnPickup(string type)
+    public void OnPickupGun(string type, string whichSlot)
     {
+        if (transform.parent.name == "LeftGun" && whichSlot != "left") { return; }
+        if (transform.parent.name == "RightGun" && whichSlot != "right") { return; }
         if (type == "BasicGun")
         {
             this.gameObject.AddComponent(typeof(BasicGun));

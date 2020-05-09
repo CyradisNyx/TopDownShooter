@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Pickup : MonoBehaviour
 {
     public float turnDegrees;
+    bool toDestroy;
     
     public enum pickupTypes
     {
@@ -24,6 +25,7 @@ public class Pickup : MonoBehaviour
     void FixedUpdate()
     {
         gameObject.transform.Rotate(0, turnDegrees * Time.deltaTime, 0, Space.World);
+        if (toDestroy) { Destroy(this.gameObject); }
     }
 
     void OnCollisionEnter(Collision coll)
@@ -32,10 +34,22 @@ public class Pickup : MonoBehaviour
 
         if (type == pickupTypes.BasicGun)
         {
-            EventMaster.Instance.Pickup("BasicGun");
+            StartCoroutine(WhichGun("BasicGun"));
         }
 
-        Destroy(this.gameObject);
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<SphereCollider>().enabled = false;
+    }
 
+    IEnumerator WhichGun(string type)
+    {
+        yield return new WaitUntil(() => Input.GetMouseButton(0) || Input.GetMouseButton(1));
+
+        if (Input.GetMouseButtonDown(0)) { EventMaster.Instance.PickupGun(type, "left"); }
+        if (Input.GetMouseButtonDown(1)) { EventMaster.Instance.PickupGun(type, "right"); }
+
+        toDestroy = true;
+
+        yield break;
     }
 }
