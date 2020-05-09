@@ -39,8 +39,14 @@ public class BulletCounter : MonoBehaviour
             if (bulletsLeft == 0)
             {
                 //gunComponent.canShoot = false;
-                gunComponent.enabled = false;
+                Destroy(gunComponent);
             }
         }
+    }
+
+    public void ResetGun()
+    {
+        this.bulletsLeft = transform.parent.GetChild(0).GetComponent<Gun>().bullets;
+        this.gunComponent = transform.parent.GetChild(0).GetComponent<Gun>();
     }
 }

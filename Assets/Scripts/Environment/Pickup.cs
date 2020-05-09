@@ -26,8 +26,10 @@ public class Pickup : MonoBehaviour
         gameObject.transform.Rotate(0, turnDegrees * Time.deltaTime, 0, Space.World);
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision coll)
     {
+        if (coll.gameObject.name != "Player") { return; }
+
         if (type == pickupTypes.BasicGun)
         {
             EventMaster.Instance.Pickup("BasicGun");
