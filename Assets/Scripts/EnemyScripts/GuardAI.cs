@@ -172,6 +172,7 @@ public class GuardAI : MonoBehaviour
         private GameObject parent;
         private GameObject gunPoint;
         private GuardAI sm;
+        private bool locked;
 
         public Shoot(GameObject parent)
         {
@@ -184,10 +185,14 @@ public class GuardAI : MonoBehaviour
         {
             sm.agent.isStopped = true;
 
+            if (locked) { return; }
+
             if (sm.SeePlayer(attackDistance))
             {
                 GameObject bullet = Resources.Load<GameObject>(bulletPrefab);
                 Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
+                locked = true;
+                //StartCoroutine(Wait(1f));
             }
             else { sm._state = GuardAI.State.StateHunt; }
 
@@ -197,6 +202,7 @@ public class GuardAI : MonoBehaviour
         IEnumerator Wait(float seconds)
         {
             yield return new WaitForSecondsRealtime(seconds);
+            this.locked = false;
             yield break;
         }
     }
