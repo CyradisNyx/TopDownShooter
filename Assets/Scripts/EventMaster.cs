@@ -64,4 +64,13 @@ public class EventMaster : MonoBehaviour
             onDeath(victim);
         }
     }
+
+    public event Action<string> onPickup;
+    public void Pickup(string type)
+    {
+        if (onPickup != null)
+        {
+            onPickup(type);
+        }
+    }
 }
