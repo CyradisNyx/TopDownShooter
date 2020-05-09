@@ -14,7 +14,9 @@ public class MouseInput : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100))
         {
-            transform.LookAt(hit.point);
+            Vector3 lookAt = hit.point;
+            lookAt.y = gameObject.transform.position.y;
+            transform.LookAt(lookAt);
         }
 
         // Get mouse clicks and send event
