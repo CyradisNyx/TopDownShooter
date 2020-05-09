@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 559180798}
   - component: {fileID: 559180797}
   - component: {fileID: 559180801}
+  - component: {fileID: 559180802}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -409,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2511aa7299ec6cb48bf24578a90385a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 4
 --- !u!114 &559180799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +449,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.75, z: 2.7}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &559180802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559180795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac8c9eb85215cf4a9b5e3432d76a447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticles: {fileID: 1843048484298952674, guid: 4d9cc3908bf607f46bbaaba6eeab3949,
+    type: 3}
 --- !u!1 &747065732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac8c9eb85215cf4a9b5e3432d76a447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticles: {fileID: 1843048484298952674, guid: d8b0863dd7dea0e46848da497eaaccdd,
+    type: 3}
 --- !u!114 &1297179872
 MonoBehaviour:
   m_ObjectHideFlags: 0

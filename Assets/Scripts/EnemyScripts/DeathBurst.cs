@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class DeathBurst : MonoBehaviour
 {
-    string particlePath = "Prefabs/DeathBurst";
-    ParticleSystem deathParticles;
+    public GameObject deathParticles;
 
     void Start()
     {
         EventMaster.Instance.onDeath += Death;
-        deathParticles = Resources.Load<ParticleSystem>(particlePath);
     }
 
     public void Death(GameObject victim)
