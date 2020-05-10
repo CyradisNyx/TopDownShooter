@@ -18,4 +18,9 @@ public class DeathBurst : MonoBehaviour
         Instantiate(deathParticles, transform.position, Quaternion.LookRotation(Vector3.up));
         Destroy(this.gameObject);
     }
+
+    public void OnDestroy()
+    {
+        EventMaster.Instance.onDeath -= Death;
+    }
 }

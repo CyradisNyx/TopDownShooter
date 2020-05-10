@@ -8,7 +8,7 @@ public class BombBullet : MonoBehaviour
 
     float damage = 1f;
     float speed = 15f;
-    float radius = 10f;
+    float radius = 5f;
 
     public void Update()
     {

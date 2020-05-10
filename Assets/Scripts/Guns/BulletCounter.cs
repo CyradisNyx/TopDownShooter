@@ -22,7 +22,7 @@ public class BulletCounter : MonoBehaviour
         }
 
         this.bulletCount = gameObject.GetComponent<Text>();
-        if (this.gameObject.GetComponent<Gun>() != null) { ResetGun(); }
+        if (this.transform.parent.GetChild(0).GetComponent<Gun>() != null) { ResetGun(); }
     }
 
     void Update()
@@ -45,7 +45,7 @@ public class BulletCounter : MonoBehaviour
 
     public void ResetGun()
     {
-        if (this.gameObject.GetComponent<Gun>() == null) { return; }
+        if (this.transform.parent.GetChild(0).GetComponent<Gun>() == null) { return;}
         this.bulletsLeft = transform.parent.GetChild(0).GetComponent<Gun>().bullets;
         this.gunComponent = transform.parent.GetChild(0).GetComponent<Gun>();
     }
