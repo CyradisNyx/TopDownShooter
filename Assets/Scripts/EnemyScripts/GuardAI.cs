@@ -60,6 +60,8 @@ public class GuardAI : MonoBehaviour
         }
     }
 
+    public void OnDestroy() { EventMaster.Instance.onBulletImpact -= BulletImpact; }
+
     public void OnCollisionEnter(Collision coll) { this._state = State.StateScan; }
 
     public void BulletImpact(float damage, GameObject coll) { if (coll.name == this.gameObject.name) { this._state = State.StateScan; } }

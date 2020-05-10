@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BombBullet : MonoBehaviour
 {
+    public GameObject boomParticles;
+
     float damage = 1f;
     float speed = 15f;
     float radius = 10f;
@@ -25,6 +27,7 @@ public class BombBullet : MonoBehaviour
             EventMaster.Instance.BulletImpact(damage, hitColliders[i].gameObject);
         }
 
-        Destroy(gameObject);
+        Instantiate(boomParticles, transform.position, Quaternion.LookRotation(Vector3.up));
+        Destroy(this.gameObject);
     }
 }
