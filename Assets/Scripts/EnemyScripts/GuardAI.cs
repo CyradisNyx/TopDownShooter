@@ -168,42 +168,37 @@ public class GuardAI : MonoBehaviour
     {
         public float attackDistance = 10f;
         public string bulletPrefab = "Prefabs/BulletPrefab";
+        public int framesBetween = 100;
 
         private GameObject parent;
         private GameObject gunPoint;
         private GuardAI sm;
         private bool locked;
+        private int waitCount;
 
         public Shoot(GameObject parent)
         {
             this.parent = parent;
             this.gunPoint = parent.transform.GetChild(0).gameObject;
             this.sm = parent.GetComponent<GuardAI>();
+            waitCount = framesBetween;
         }
 
         public void Update()
         {
             sm.agent.isStopped = true;
 
-            if (locked) { return; }
+            if (waitCount < framesBetween) { waitCount++; return; }
 
             if (sm.SeePlayer(attackDistance))
             {
                 GameObject bullet = Resources.Load<GameObject>(bulletPrefab);
                 Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
-                locked = true;
-                //StartCoroutine(Wait(1f));
+                waitCount = 0;             
             }
             else { sm._state = GuardAI.State.StateHunt; }
 
             sm.agent.isStopped = false;
-        }
-
-        IEnumerator Wait(float seconds)
-        {
-            yield return new WaitForSecondsRealtime(seconds);
-            this.locked = false;
-            yield break;
         }
     }
 
