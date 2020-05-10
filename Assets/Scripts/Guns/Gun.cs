@@ -10,8 +10,8 @@ public class Gun : MonoBehaviour
     public virtual float damage { get; set; }
     public virtual float range { get; set; }
     public virtual int bullets { get; set; }
-    public GameObject player;
-    public GameObject playerGun;
+    protected GameObject player;
+    protected GameObject playerGun;
 
     public bool canShoot = true;
 
@@ -37,4 +37,10 @@ public class Gun : MonoBehaviour
     }
 
     public virtual void OnClick(Vector3 mousePos) { }
+
+    void OnDisable()
+    {
+        gameObject.GetComponent<Image>().enabled = false;
+        canShoot = false;
+    }
 }

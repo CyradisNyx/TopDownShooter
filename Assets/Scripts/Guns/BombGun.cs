@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BasicGun : Gun
+public class BombGun : Gun
 {
-    public override string SpriteFile { get { return "Sprites/UI/BasicGunIcon"; } }
+    public override string SpriteFile { get { return ""; } }
     string BulletFile = "Prefabs/BulletPrefab";
     public override float range { get { return 20f; } }
     public override int bullets { get { return 20; } }
