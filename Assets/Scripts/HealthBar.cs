@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public Sprite emptyHealth;
     public int numPerRow;
 
-    float health;
+    TakeDamage playerHealth;
     List<GameObject> hearts = new List<GameObject>();
 
     public void Start()
@@ -19,23 +19,12 @@ public class HealthBar : MonoBehaviour
             hearts.Add(gameObject.transform.GetChild(i).gameObject);
         }
 
-        EventMaster.Instance.onBulletImpact += BulletImpact;
-        EventMaster.Instance.onPickup += Pickup;
-
-        this.health = GameObject.Find("Player").GetComponent<TakeDamage>().health;
+        playerHealth = GameObject.Find("Player").GetComponent<TakeDamage>();
 
         UpdateBar();
     }
 
-    public void BulletImpact(float damage, GameObject coll)
-    {
-        if (coll.name != "Player") { return; }
-        this.health -= damage;
-
-        UpdateBar();
-    }
-
-    public void Pickup(string type)
+    void Update()
     {
         UpdateBar();
     }
@@ -44,7 +33,7 @@ public class HealthBar : MonoBehaviour
     {
         for (int i = 0; i < hearts.Count; i++)
         {
-            if (i < health) { hearts[i].GetComponent<Image>().sprite = fullHealth; }
+            if (i < playerHealth.getHealth()) { hearts[i].GetComponent<Image>().sprite = fullHealth; }
             else { hearts[i].GetComponent<Image>().sprite = emptyHealth; }
         }
     }

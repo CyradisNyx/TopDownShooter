@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    public float health;
+    public float fullHealth;
 
-    float fullHealth;
+    float health;
 
     // Start is called before the first frame update
     void Start()
@@ -14,12 +14,14 @@ public class TakeDamage : MonoBehaviour
         EventMaster.Instance.onBulletImpact += BulletImpact;
         EventMaster.Instance.onPickup += Pickup;
 
-        fullHealth = health;
+        this.health = fullHealth;
     }
+
+    public float getHealth() { return health; }
 
     public void BulletImpact(float damage, GameObject coll)
     {
-        Debug.Log("EventCollider " + coll.name + ", Me " + this.gameObject.name);
+        //Debug.Log("EventCollider " + coll.name + ", Me " + this.gameObject.name);
         if (coll.name == this.gameObject.name)
         {
             health -= damage;
@@ -31,9 +33,9 @@ public class TakeDamage : MonoBehaviour
         }
     }
 
-    public void Pickup(string type)
+    public void Pickup(string type, GameObject who)
     {
-        if (type == "Health")
+        if (type == "Health" && who.name == this.gameObject.name)
         {
             health = fullHealth;
         }

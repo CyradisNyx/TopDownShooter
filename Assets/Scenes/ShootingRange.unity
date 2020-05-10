@@ -558,7 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2511aa7299ec6cb48bf24578a90385a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  fullHealth: 10
+  canPickup: 1
 --- !u!114 &559180799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,7 +2032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2511aa7299ec6cb48bf24578a90385a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  fullHealth: 4
+  canPickup: 0
 --- !u!195 &1297179865
 NavMeshAgent:
   m_ObjectHideFlags: 0

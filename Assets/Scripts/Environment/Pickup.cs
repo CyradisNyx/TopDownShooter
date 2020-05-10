@@ -44,9 +44,9 @@ public class Pickup : MonoBehaviour
             StartCoroutine(WhichGun("BasicGun"));
         }
 
-        if (type == pickupTypes.BasicGun)
+        if (type == pickupTypes.Health)
         {
-            EventMaster.Instance.Pickup("Health");
+            EventMaster.Instance.Pickup("Health", coll.gameObject);
         }
 
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;

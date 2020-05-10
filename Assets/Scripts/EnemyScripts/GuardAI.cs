@@ -168,7 +168,7 @@ public class GuardAI : MonoBehaviour
     {
         public float attackDistance = 10f;
         public string bulletPrefab = "Prefabs/BulletPrefab";
-        public int framesBetween = 100;
+        public int framesBetween = 50;
 
         private GameObject parent;
         private GameObject gunPoint;
@@ -188,7 +188,11 @@ public class GuardAI : MonoBehaviour
         {
             sm.agent.isStopped = true;
 
-            if (waitCount < framesBetween) { waitCount++; return; }
+            if (waitCount < framesBetween)
+            {
+                waitCount++; sm.agent.isStopped = false;
+                return;
+            }
 
             if (sm.SeePlayer(attackDistance))
             {

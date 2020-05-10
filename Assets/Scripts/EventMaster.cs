@@ -65,12 +65,12 @@ public class EventMaster : MonoBehaviour
         }
     }
 
-    public event Action<string> onPickup;
-    public void Pickup(string type)
+    public event Action<string, GameObject> onPickup;
+    public void Pickup(string type, GameObject who)
     {
         if (onPickup != null)
         {
-            onPickup(type);
+            onPickup(type, who);
         }
     }
 
