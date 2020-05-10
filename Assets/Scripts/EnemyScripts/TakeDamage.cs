@@ -6,7 +6,7 @@ public class TakeDamage : MonoBehaviour
 {
     public float fullHealth;
 
-    float health;
+    public float health;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +44,7 @@ public class TakeDamage : MonoBehaviour
     void OnDestroy()
     {
         EventMaster.Instance.onBulletImpact -= BulletImpact;
+        EventMaster.Instance.onPickup -= Pickup;
     }
 
     bool floatSimilar(float float1, float float2)

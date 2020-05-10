@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BombGun : Gun
 {
     public override string SpriteFile { get { return ""; } }
-    string BulletFile = "Prefabs/BulletPrefab";
+    string BulletFile = "Prefabs/BombPrefab";
     public override float range { get { return 20f; } }
     public override int bullets { get { return 20; } }
 

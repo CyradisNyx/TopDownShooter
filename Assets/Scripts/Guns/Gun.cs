@@ -18,6 +18,8 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponent<Image>().enabled = true;
+        canShoot = true;
         player = GameObject.Find("Player");
         playerGun = player.transform.GetChild(0).gameObject;
         gunSprite = Resources.Load<Sprite>(SpriteFile);

@@ -31,6 +31,8 @@ public class GuardAI : MonoBehaviour
         this.hunt = new Hunt(this.gameObject);
         this.shoot = new Shoot(this.gameObject);
         this.scan = new Scan(this.gameObject);
+
+        EventMaster.Instance.onBulletImpact += BulletImpact;
     }
 
     public void Update()
@@ -58,10 +60,9 @@ public class GuardAI : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter(Collision coll)
-    {
-        this._state = State.StateScan;
-    }
+    public void OnCollisionEnter(Collision coll) { this._state = State.StateScan; }
+
+    public void BulletImpact(float damage, GameObject coll) { if (coll.name == this.gameObject.name) { this._state = State.StateScan; } }
 
     bool SimilarVector3(Vector3 a, Vector3 b)
     {

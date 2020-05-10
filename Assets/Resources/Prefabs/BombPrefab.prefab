@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6081885549872759316}
   - component: {fileID: 3589811637775015383}
   - component: {fileID: 3691333196025480965}
-  - component: {fileID: 2523537002232267658}
+  - component: {fileID: 8362149587490478088}
   m_Layer: 0
-  m_Name: BulletPrefab
+  m_Name: BombPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2523537002232267658
+--- !u!114 &8362149587490478088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,6 +120,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9123037436712687232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c888639f743e774e9ffed389017959d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f5157e3b97d631408a643fd4bbc02b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
