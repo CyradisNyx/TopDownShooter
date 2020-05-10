@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
 {
     public float turnDegrees;
     bool toDestroy;
+    public GameObject player;
     
     public enum pickupTypes
     {
