@@ -8,6 +8,8 @@ public class BulletCounter : MonoBehaviour
     int bulletsLeft;
     public Text bulletCount;
     public Gun gunComponent;
+    string type;
+    string whichSlot;
 
     // Start is called before the first frame update
     void Start()
@@ -15,10 +17,12 @@ public class BulletCounter : MonoBehaviour
         if (transform.parent.name == "LeftGun")
         {
             EventMaster.Instance.onLeftClick += OnClick;
+            whichSlot = "left";
         }
         else if (transform.parent.name == "RightGun")
         {
             EventMaster.Instance.onRightClick += OnClick;
+            whichSlot = "right";
         }
 
         this.bulletCount = gameObject.GetComponent<Text>();
@@ -38,6 +42,7 @@ public class BulletCounter : MonoBehaviour
             if (bulletsLeft == 0)
             {
                 //gunComponent.canShoot = false;
+                EventMaster.Instance.GunOut(type, whichSlot);
                 Destroy(gunComponent);
             }
         }
@@ -48,5 +53,7 @@ public class BulletCounter : MonoBehaviour
         if (this.transform.parent.GetChild(0).GetComponent<Gun>() == null) { return;}
         this.bulletsLeft = transform.parent.GetChild(0).GetComponent<Gun>().bullets;
         this.gunComponent = transform.parent.GetChild(0).GetComponent<Gun>();
+
+        type = transform.parent.GetChild(0).GetComponent<Gun>().GetType().ToString();
     }
 }

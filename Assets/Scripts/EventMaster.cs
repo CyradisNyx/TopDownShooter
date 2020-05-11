@@ -82,4 +82,13 @@ public class EventMaster : MonoBehaviour
             onPickupGun(type, whichSlot);
         }
     }
+
+    public event Action<string, string> onGunOut;
+    public void GunOut(string type, string whichSlot)
+    {
+        if (onGunOut != null)
+        {
+            onGunOut(type, whichSlot);
+        }
+    }
 }
