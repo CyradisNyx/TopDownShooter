@@ -8,6 +8,8 @@ public class FollowCam : MonoBehaviour
     public float xOffset;
     public float yOffset;
     public float zOffset;
+    public int levelX;
+    public int levelZ;
 
     private Vector3 velocity = Vector3.zero;
     private float smoothing = 0.3f;

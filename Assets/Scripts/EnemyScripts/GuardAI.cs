@@ -22,6 +22,9 @@ public class GuardAI : MonoBehaviour
     public Hunt hunt;
     public Scan scan;
 
+    public Vector3 patrolPointA;
+    public Vector3 patrolPointB;
+
     public void Start()
     {
         this._state = State.StatePatrol;
@@ -117,6 +120,8 @@ public class GuardAI : MonoBehaviour
         {
             this.parent = parent;
             this.sm = parent.GetComponent<GuardAI>();
+            pointA = sm.patrolPointA;
+            pointB = sm.patrolPointB;
         }
 
         public void Update()

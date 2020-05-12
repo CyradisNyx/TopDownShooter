@@ -15,6 +15,7 @@ public class DynamicLevel : MonoBehaviour
     {
         string[] asString = GenerateLevel();
         tiles = GenerateTiles(asString);
+        Debug.Log(levelX.ToString() + ", " + levelZ.ToString());
     }
 
     private string[] GenerateLevel()
@@ -37,7 +38,7 @@ public class DynamicLevel : MonoBehaviour
 
         for (int x = 0; x < levelX; x++)
         {
-            Debug.Log(strings[x]);
+            //Debug.Log(strings[x]);
 
             for (int z = 0; z < levelZ; z++)
             {
