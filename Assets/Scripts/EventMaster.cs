@@ -91,4 +91,22 @@ public class EventMaster : MonoBehaviour
             onGunOut(type, whichSlot);
         }
     }
+
+    public event Action<string> onCutsceneStart;
+    public void CutsceneStart(string type)
+    {
+        if (onCutsceneStart != null)
+        {
+            onCutsceneStart(type);
+        }
+    }
+
+    public event Action<string> onCutsceneEnd;
+    public void CutsceneEnd(string type)
+    {
+        if (onCutsceneEnd != null)
+        {
+            onCutsceneEnd(type);
+        }
+    }
 }
