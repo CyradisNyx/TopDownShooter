@@ -27,6 +27,7 @@ public class CutsceneStart : MonoBehaviour
 
         cam.gameObject.GetComponent<FollowCam>().enabled = false;
         player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<MouseInput>().enabled = false;
 
         EventMaster.Instance.CutsceneStart(_type.ToString());
     }
@@ -37,6 +38,7 @@ public class CutsceneStart : MonoBehaviour
 
         cam.gameObject.GetComponent<FollowCam>().enabled = true;
         player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponent<MouseInput>().enabled = true;
 
         Destroy(this.gameObject);
     }
