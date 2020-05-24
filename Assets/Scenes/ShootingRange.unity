@@ -1277,8 +1277,6 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 10
   zOffset: 0
-  levelX: 0
-  levelZ: 0
 --- !u!81 &1087526919
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2103,6 +2101,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1010460408}
     m_Modifications:
+    - target: {fileID: 1304390457352915688, guid: 116d3438c9781c345a49c650056bfc9a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1304390457578928202, guid: 116d3438c9781c345a49c650056bfc9a,
         type: 3}
       propertyPath: m_LocalPosition.x
