@@ -1701,7 +1701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1409003198
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2816,6 +2816,7 @@ MonoBehaviour:
   scenePos: {fileID: 1158121295}
   actors:
   - {fileID: 359153022}
+  textBox: {fileID: 1409003197}
 --- !u!1 &1942703783
 GameObject:
   m_ObjectHideFlags: 0

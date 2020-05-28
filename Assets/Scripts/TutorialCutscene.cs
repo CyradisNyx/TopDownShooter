@@ -9,6 +9,7 @@ public class TutorialCutscene : MonoBehaviour
 
     public Transform scenePos;
     public List<GameObject> actors;
+    public GameObject textBox;
 
     bool active = false;
     Vector3 scenePosActual;
@@ -34,6 +35,7 @@ public class TutorialCutscene : MonoBehaviour
         if (type != "TUTORIAL") { return; }
 
         this.active = true;
+        textBox.SetActive(true);
 
         StartCoroutine(WaitSeconds(5f));
 
@@ -51,6 +53,7 @@ public class TutorialCutscene : MonoBehaviour
     void CloseScene()
     {
         this.active = false;
+        textBox.SetActive(false);
         EventMaster.Instance.CutsceneEnd("TUTORIAL");
     }
 }
