@@ -10,6 +10,8 @@ public class CutsceneStart : MonoBehaviour
     public enum Types
     {
         TUTORIALEND,
+        TUTORIALMID,
+        TUTORIALSTART,
     }
 
     public Types _type;

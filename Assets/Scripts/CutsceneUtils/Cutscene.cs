@@ -11,7 +11,9 @@ public class Cutscene : MonoBehaviour
     public List<GameObject> actors;
     public GameObject textBox;
 
-    public virtual string cutsceneType { get; set; }
+    public virtual string CutsceneType { get; set; }
+    public virtual int CutsceneLength { get; set; }
+
     bool active = false;
     Vector3 scenePosActual;
 
@@ -33,7 +35,7 @@ public class Cutscene : MonoBehaviour
 
     public void CutsceneStart(string type)
     {
-        if (type != cutsceneType) { return; }
+        if (type != CutsceneType) { return; }
 
         this.active = true;
         textBox.SetActive(true);
@@ -54,6 +56,6 @@ public class Cutscene : MonoBehaviour
     {
         this.active = false;
         textBox.SetActive(false);
-        EventMaster.Instance.CutsceneEnd(cutsceneType);
+        EventMaster.Instance.CutsceneEnd(CutsceneType);
     }
 }

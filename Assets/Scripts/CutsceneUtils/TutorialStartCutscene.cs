@@ -2,17 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialStartCutscene : MonoBehaviour
+public class TutorialStartCutscene : Cutscene
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public override string CutsceneType { get { return "TUTORIALSTART"; } }
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class TutorialEndCutscene : Cutscene
 {
-    public override string cutsceneType { get { return "TUTORIALEND"; } }
+    public override string CutsceneType { get { return "TUTORIALEND"; } }
 }
