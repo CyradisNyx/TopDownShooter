@@ -9,7 +9,7 @@ public class CutsceneStart : MonoBehaviour
 
     public enum Types
     {
-        TUTORIAL,
+        TUTORIALEND,
     }
 
     public Types _type;

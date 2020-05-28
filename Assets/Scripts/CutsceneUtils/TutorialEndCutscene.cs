@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialCutscene : MonoBehaviour
+public class TutorialEndCutscene : MonoBehaviour
 {
     Camera cam;
     GameObject player;
@@ -32,7 +32,7 @@ public class TutorialCutscene : MonoBehaviour
 
     public void CutsceneStart(string type)
     {
-        if (type != "TUTORIAL") { return; }
+        if (type != "TUTORIALEND") { return; }
 
         this.active = true;
         textBox.SetActive(true);
