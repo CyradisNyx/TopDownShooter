@@ -7,6 +7,8 @@ public class Cutscene : MonoBehaviour
 {
     Camera cam;
     GameObject player;
+
+    protected GameObject textBubble;
     protected Text textObject;
 
     public Transform scenePos;
@@ -17,12 +19,15 @@ public class Cutscene : MonoBehaviour
     public virtual float CutsceneLength { get; set; }
 
     bool active = false;
+    bool continueText = false;
+
     Vector3 scenePosActual;
 
     void Start()
     {
         cam = Camera.main;
         player = GameObject.FindWithTag("Player");
+        textBubble = Resources.Load<GameObject>("Prefabs/TextBubble");
         textObject = textBox.transform.GetChild(0).GetComponent<Text>();
         this.scenePosActual = scenePos.position;
         this.scenePosActual.y = cam.gameObject.transform.position.y;
@@ -57,6 +62,24 @@ public class Cutscene : MonoBehaviour
     }
 
     public virtual IEnumerator CutsceneProcedure() { yield return null; }
+
+    protected IEnumerator TextAppear(string text, int actorID)
+    {
+        StartCoroutine(TypeWriter(text));
+        yield return new WaitUntil(() => this.continueText == true);
+        this.continueText = false;
+
+        yield return null;
+    }
+
+    IEnumerator TypeWriter(string text)
+    {
+        this.textObject.text = text;
+        yield return new WaitForSeconds(5f);
+        this.continueText = true;
+
+        yield return null;
+    }
 
     void CloseScene()
     {
