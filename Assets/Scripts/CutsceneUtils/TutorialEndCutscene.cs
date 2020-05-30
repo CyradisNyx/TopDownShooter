@@ -16,10 +16,11 @@ public class TutorialEndCutscene : Cutscene
         yield return TypeWriter("i told you this would happen", 0);
         yield return TypeWriter("we will squash the resistance!", 0);
 
-        yield return TypeWriter("please...", 1, 0.5f);
+        yield return TypeWriter("please...", 1, 0.3f);
+        yield return TypeWriter("no...", 1, 0.5f);
         StartCoroutine(Kill(1));
 
-        yield return TypeWriter("*he kills your guide friend*",-1, 0.1f, 2f);
+        yield return TypeWriter("*he kills your guide friend*");
 
         yield return TypeWriter("mwahahahahahaha", 0);
         yield return TypeWriter("now no one can stop me!", 0);

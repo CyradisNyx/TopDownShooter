@@ -52,7 +52,7 @@ public class Cutscene : MonoBehaviour
 
     public virtual IEnumerator CutsceneProcedure() { yield return null; }
 
-    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.2f, float waitAfter = 1.5f)
+    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.1f, float waitAfter = 2f)
     {
         if (actorID >= 0)
         {
@@ -93,12 +93,13 @@ public class Cutscene : MonoBehaviour
         yield return null;
     }
 
-    protected IEnumerator Move(int actorID, Vector3 moveTo, float speed = 0.1f)
+    protected IEnumerator Move(int actorID, Vector3 moveTo, float speed = 0.5f)
     {
         while (Vector3.Distance(actors[actorID].transform.position, moveTo) >= 0.5f)
         {
             Debug.Log("moving");
-            actors[actorID].transform.position = Vector3.MoveTowards(actors[actorID].transform.position, moveTo, speed * Time.deltaTime);
+            actors[actorID].transform.position = Vector3.Lerp(actors[actorID].transform.position, moveTo, speed * Time.deltaTime);
+            yield return null;
         }
 
         yield return null;
