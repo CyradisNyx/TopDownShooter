@@ -12,7 +12,13 @@ public class TutorialEndCutscene : Cutscene
     {
         Debug.Log("CutsceneEnd");
 
-        StartCoroutine(TextAppear("i am a cutscene", 0));
+        StartCoroutine(TypeWriter("i am a cutscene"));
+        yield return new WaitUntil(() => this.continueText == true);
+        this.continueText = false;
+
+        StartCoroutine(TypeWriter("ooooooooo"));
+        yield return new WaitUntil(() => this.continueText == true);
+        this.continueText = false;
 
         yield return null;
     }

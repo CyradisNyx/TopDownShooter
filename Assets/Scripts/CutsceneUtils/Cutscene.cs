@@ -19,7 +19,7 @@ public class Cutscene : MonoBehaviour
     public virtual float CutsceneLength { get; set; }
 
     bool active = false;
-    bool continueText = false;
+    protected bool continueText = false;
 
     Vector3 scenePosActual;
 
@@ -63,16 +63,7 @@ public class Cutscene : MonoBehaviour
 
     public virtual IEnumerator CutsceneProcedure() { yield return null; }
 
-    protected IEnumerator TextAppear(string text, int actorID)
-    {
-        StartCoroutine(TypeWriter(text));
-        yield return new WaitUntil(() => this.continueText == true);
-        this.continueText = false;
-
-        yield return null;
-    }
-
-    IEnumerator TypeWriter(string text)
+    protected IEnumerator TypeWriter(string text)
     {
         this.textObject.text = text;
         yield return new WaitForSeconds(5f);
