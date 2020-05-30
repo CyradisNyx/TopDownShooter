@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TutorialEndCutscene : Cutscene
 {
     public override string CutsceneType { get { return "TUTORIALEND"; } }
-    public override float CutsceneLength { get { return 20f; } }
     public List<GameObject> positions;
 
     public override IEnumerator CutsceneProcedure()
