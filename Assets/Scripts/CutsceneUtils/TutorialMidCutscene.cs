@@ -9,7 +9,7 @@ public class TutorialMidCutscene : Cutscene
 
     public override IEnumerator CutsceneProcedure()
     {
-        Debug.Log("CutsceneEnd");
+        Debug.Log("CutsceneMid");
 
         yield return TypeWriter("oh good, you made it!", 0);
         yield return TypeWriter("this is a gun", 0);
