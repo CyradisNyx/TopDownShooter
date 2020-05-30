@@ -65,8 +65,11 @@ public class Cutscene : MonoBehaviour
 
     protected IEnumerator TypeWriter(string text)
     {
-        this.textObject.text = text;
-        yield return new WaitForSeconds(5f);
+        for (int i = 0; i < text.Length; i++)
+        {
+            this.textObject.text = text.Substring(0, i + 1);
+            yield return new WaitForSeconds(0.25f);
+        }
         this.continueText = true;
 
         yield return null;

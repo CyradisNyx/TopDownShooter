@@ -15,10 +15,12 @@ public class TutorialEndCutscene : Cutscene
         StartCoroutine(TypeWriter("i am a cutscene"));
         yield return new WaitUntil(() => this.continueText == true);
         this.continueText = false;
+        yield return new WaitForSeconds(1.5f);
 
         StartCoroutine(TypeWriter("ooooooooo"));
         yield return new WaitUntil(() => this.continueText == true);
         this.continueText = false;
+        yield return new WaitForSeconds(1.5f);
 
         yield return null;
     }
