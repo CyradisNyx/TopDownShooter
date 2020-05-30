@@ -65,6 +65,19 @@ public class Cutscene : MonoBehaviour
         if (actorID >= 0)
         {
             // Add text bubble, start talking noise
+            Vector3 bubblePos = new Vector3(
+                actors[actorID].transform.position.x + 0.5f,
+                actors[actorID].transform.position.y + 2f,
+                actors[actorID].transform.position.z + 1f
+                );
+            Vector3 bubbleRot = new Vector3(
+                90f,
+                0f,
+                0f
+                );
+
+            GameObject textBubblePrefab = Instantiate(textBubble, bubblePos, Quaternion.Euler(bubbleRot));
+            textBubblePrefab.transform.SetParent(actors[actorID].transform);
         }
         for (int i = 0; i < text.Length; i++)
         {
@@ -77,6 +90,7 @@ public class Cutscene : MonoBehaviour
         if (actorID >= 0)
         {
             // Remove text bubble, end talking noise
+            Destroy(actors[actorID].transform.GetChild(0).gameObject);
         }
         yield return null;
     }
