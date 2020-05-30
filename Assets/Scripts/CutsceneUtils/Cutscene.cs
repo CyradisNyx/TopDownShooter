@@ -47,20 +47,12 @@ public class Cutscene : MonoBehaviour
         this.active = true;
         textBox.SetActive(true);
 
-        StartCoroutine(WaitSeconds(CutsceneLength));
-        StartCoroutine(CutsceneProcedure());
-    }
-
-    IEnumerator WaitSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-
-        this.CloseScene();
+        StartCoroutine(RunScene());
     }
 
     public virtual IEnumerator CutsceneProcedure() { yield return null; }
 
-    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.25f, float waitAfter = 1.5f)
+    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.2f, float waitAfter = 1.5f)
     {
         if (actorID >= 0)
         {
@@ -95,10 +87,20 @@ public class Cutscene : MonoBehaviour
         yield return null;
     }
 
-    void CloseScene()
+    protected IEnumerator Kill(int actorID)
     {
+        EventMaster.Instance.Death(actors[actorID]);
+        yield return null;
+    }
+
+    IEnumerator RunScene()
+    {
+        yield return CutsceneProcedure();
+
         this.active = false;
         textBox.SetActive(false);
         EventMaster.Instance.CutsceneEnd(CutsceneType);
+
+        yield return null;
     }
 }
