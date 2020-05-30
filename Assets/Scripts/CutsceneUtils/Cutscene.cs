@@ -19,7 +19,6 @@ public class Cutscene : MonoBehaviour
     public virtual float CutsceneLength { get; set; }
 
     bool active = false;
-    protected bool continueText = false;
 
     Vector3 scenePosActual;
 
@@ -50,8 +49,6 @@ public class Cutscene : MonoBehaviour
 
         StartCoroutine(WaitSeconds(CutsceneLength));
         StartCoroutine(CutsceneProcedure());
-
-        // Add text bubbles and play noise over actors
     }
 
     IEnumerator WaitSeconds(float seconds)
@@ -63,15 +60,24 @@ public class Cutscene : MonoBehaviour
 
     public virtual IEnumerator CutsceneProcedure() { yield return null; }
 
-    protected IEnumerator TypeWriter(string text)
+    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.25f, float waitAfter = 1.5f)
     {
+        if (actorID >= 0)
+        {
+            // Add text bubble, start talking noise
+        }
         for (int i = 0; i < text.Length; i++)
         {
             this.textObject.text = text.Substring(0, i + 1);
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(waitBetween);
         }
-        this.continueText = true;
 
+        yield return new WaitForSeconds(waitAfter);
+
+        if (actorID >= 0)
+        {
+            // Remove text bubble, end talking noise
+        }
         yield return null;
     }
 
