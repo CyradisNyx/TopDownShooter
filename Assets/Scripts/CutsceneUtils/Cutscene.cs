@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cutscene : MonoBehaviour
 {
     Camera cam;
     GameObject player;
+    protected Text textObject;
 
     public Transform scenePos;
     public List<GameObject> actors;
     public GameObject textBox;
 
     public virtual string CutsceneType { get; set; }
-    public virtual int CutsceneLength { get; set; }
+    public virtual float CutsceneLength { get; set; }
 
     bool active = false;
     Vector3 scenePosActual;
@@ -21,6 +23,7 @@ public class Cutscene : MonoBehaviour
     {
         cam = Camera.main;
         player = GameObject.FindWithTag("Player");
+        textObject = textBox.transform.GetChild(0).GetComponent<Text>();
         this.scenePosActual = scenePos.position;
         this.scenePosActual.y = cam.gameObject.transform.position.y;
 
@@ -40,7 +43,8 @@ public class Cutscene : MonoBehaviour
         this.active = true;
         textBox.SetActive(true);
 
-        StartCoroutine(WaitSeconds(5f));
+        StartCoroutine(WaitSeconds(CutsceneLength));
+        StartCoroutine(CutsceneProcedure());
 
         // Add text bubbles and play noise over actors
     }
@@ -51,6 +55,8 @@ public class Cutscene : MonoBehaviour
 
         this.CloseScene();
     }
+
+    public virtual IEnumerator CutsceneProcedure() { yield return null; }
 
     void CloseScene()
     {
