@@ -93,12 +93,12 @@ public class Cutscene : MonoBehaviour
         yield return null;
     }
 
-    protected IEnumerator Move(int actorID, Vector3 moveTo, float speed = 0.5f)
+    protected IEnumerator Move(int actorID, Vector3 moveTo, float speed = 7f)
     {
         while (Vector3.Distance(actors[actorID].transform.position, moveTo) >= 0.5f)
         {
             Debug.Log("moving");
-            actors[actorID].transform.position = Vector3.Lerp(actors[actorID].transform.position, moveTo, speed * Time.deltaTime);
+            actors[actorID].transform.position = Vector3.MoveTowards(actors[actorID].transform.position, moveTo, speed * Time.deltaTime);
             yield return null;
         }
 
