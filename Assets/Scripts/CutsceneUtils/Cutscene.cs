@@ -55,7 +55,7 @@ public class Cutscene : MonoBehaviour
 
     public virtual IEnumerator CutsceneProcedure() { yield return null; }
 
-    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.1f, float waitAfter = 2f)
+    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.2f, float waitAfter = 2f)
     {
         if (actorID >= 0)
         {
@@ -79,7 +79,8 @@ public class Cutscene : MonoBehaviour
             this.textObject.text = text.Substring(0, i + 1);
             textSound.pitch = Random.Range(0.9f, 1.1f);
             textSound.Play(0);
-            yield return new WaitForSeconds(waitBetween);
+            float waitVariation = Random.Range(waitBetween - 0.1f, waitBetween + 0.1f);
+            yield return new WaitForSeconds(waitVariation);
         }
 
         yield return new WaitForSeconds(waitAfter);
