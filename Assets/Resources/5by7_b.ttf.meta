@@ -3,7 +3,7 @@ guid: 910bb2d4f6618fc47915ac84ad895fcd
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 16
+  fontSize: 350
   forceTextureCase: 2
   characterSpacing: 0
   characterPadding: 1
@@ -11,7 +11,8 @@ TrueTypeFontImporter:
   fontName: 5by7
   fontNames:
   - 5by7
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 83c5c7c4c7d9b9b45a67e72f077f851a, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
