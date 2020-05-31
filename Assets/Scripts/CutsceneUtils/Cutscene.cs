@@ -7,6 +7,7 @@ public class Cutscene : MonoBehaviour
 {
     Camera cam;
     GameObject player;
+    AudioSource textSound;
 
     protected GameObject textBubble;
     protected Text textObject;
@@ -26,6 +27,8 @@ public class Cutscene : MonoBehaviour
     {
         cam = Camera.main;
         player = GameObject.FindWithTag("Player");
+        textSound = textBox.GetComponent<AudioSource>();
+
         textBubble = Resources.Load<GameObject>("Prefabs/TextBubble");
         textObject = textBox.transform.GetChild(0).GetComponent<Text>();
         this.scenePosActual = scenePos.position;
@@ -74,6 +77,8 @@ public class Cutscene : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             this.textObject.text = text.Substring(0, i + 1);
+            textSound.pitch = Random.Range(0.9f, 1.1f);
+            textSound.Play(0);
             yield return new WaitForSeconds(waitBetween);
         }
 
