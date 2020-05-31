@@ -25,6 +25,8 @@ public class GuardAI : MonoBehaviour
     public Vector3 patrolPointA;
     public Vector3 patrolPointB;
 
+    public bool paused;
+
     public void Start()
     {
         this._state = State.StatePatrol;
@@ -36,11 +38,14 @@ public class GuardAI : MonoBehaviour
         this.scan = new Scan(this.gameObject);
 
         EventMaster.Instance.onBulletImpact += BulletImpact;
+        EventMaster.Instance.onCutsceneStart += CutsceneStart;
+        EventMaster.Instance.onCutsceneEnd += CutsceneEnd;
     }
 
     public void Update()
     {
         // Check for being stuck, and reset to Patrol
+        if (paused) { return; }
         if (!agent.hasPath && agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
         {
             this._state = State.StatePatrol;
@@ -68,6 +73,10 @@ public class GuardAI : MonoBehaviour
     public void OnCollisionEnter(Collision coll) { this._state = State.StateScan; }
 
     public void BulletImpact(float damage, GameObject coll) { if (coll.name == this.gameObject.name) { this._state = State.StateScan; } }
+
+    public void CutsceneStart(string type) { paused = true; }
+
+    public void CutsceneEnd(string type) { paused = false; }
 
     bool SimilarVector3(Vector3 a, Vector3 b)
     {
