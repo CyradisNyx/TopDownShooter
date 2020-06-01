@@ -7,13 +7,17 @@ public class PauseController : MonoBehaviour
     public GameObject regularUI;
     public GameObject pauseUI;
     public GameObject settingsUI;
+    public GameObject deathUI;
 
     public bool isPaused;
+    public bool isDead;
 
     void Start()
     {
         EventMaster.Instance.onPause += Pause;
+        EventMaster.Instance.onDeath += Death;
         isPaused = false;
+        isDead = false;
     }
 
     void Update()
@@ -38,5 +42,24 @@ public class PauseController : MonoBehaviour
             settingsUI.SetActive(false);
             Time.timeScale = 1f;
         }
+    }
+
+    public void Death(GameObject victim)
+    {
+        if (victim.tag == "Player")
+        {
+            regularUI.SetActive(false);
+            StartCoroutine(DelayedDeath(2f));
+        }
+    }
+
+    IEnumerator DelayedDeath(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        deathUI.SetActive(true);
+        Time.timeScale = 0f;
+
+        yield return null;
     }
 }
