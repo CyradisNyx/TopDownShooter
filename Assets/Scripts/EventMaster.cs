@@ -109,4 +109,13 @@ public class EventMaster : MonoBehaviour
             onCutsceneEnd(type);
         }
     }
+
+    public event Action<bool> onPause;
+    public void Pause(bool isPaused)
+    {
+        if (onPause != null)
+        {
+            onPause(isPaused);
+        }
+    }
 }
