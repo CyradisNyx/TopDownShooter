@@ -44,6 +44,11 @@ public class Cutscene : MonoBehaviour
         cam.gameObject.transform.position = Vector3.Lerp(cam.gameObject.transform.position, scenePosActual, Time.deltaTime);
     }
 
+    void OnDisable()
+    {
+        EventMaster.Instance.onCutsceneStart -= CutsceneStart;
+    }
+
     public void CutsceneStart(string type)
     {
         if (type != CutsceneType) { return; }
@@ -140,6 +145,7 @@ public class Cutscene : MonoBehaviour
         this.active = false;
         textBox.SetActive(false);
         EventMaster.Instance.CutsceneEnd(CutsceneType);
+        Destroy(this.gameObject.transform.parent.gameObject);
 
         yield return null;
     }
