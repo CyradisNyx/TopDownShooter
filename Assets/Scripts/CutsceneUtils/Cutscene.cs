@@ -74,6 +74,45 @@ public class Cutscene : MonoBehaviour
             GameObject textBubblePrefab = Instantiate(textBubble, bubblePos, Quaternion.Euler(bubbleRot));
             textBubblePrefab.transform.SetParent(actors[actorID].transform);
         }
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            this.textObject.text = text.Substring(0, i + 1);
+            textSound.pitch = Random.Range(0.9f, 1.1f);
+            textSound.Play(0);
+            float waitVariation = Random.Range(waitBetween - 0.1f, waitBetween + 0.1f);
+            yield return new WaitForSeconds(waitVariation);
+        }
+
+        yield return new WaitUntil(() => Input.anyKeyDown);
+
+        if (actorID >= 0)
+        {
+            // Remove text bubble, end talking noise
+            Destroy(actors[actorID].transform.GetChild(0).gameObject);
+        }
+        yield return null;
+    }
+
+    protected IEnumerator TypeWriterOriginal(string text, int actorID = -1, float waitBetween = 0.2f, float waitAfter = 2f)
+    {
+        if (actorID >= 0)
+        {
+            // Add text bubble, start talking noise
+            Vector3 bubblePos = new Vector3(
+                actors[actorID].transform.position.x + 0.5f,
+                actors[actorID].transform.position.y + 2f,
+                actors[actorID].transform.position.z + 1f
+                );
+            Vector3 bubbleRot = new Vector3(
+                90f,
+                0f,
+                0f
+                );
+
+            GameObject textBubblePrefab = Instantiate(textBubble, bubblePos, Quaternion.Euler(bubbleRot));
+            textBubblePrefab.transform.SetParent(actors[actorID].transform);
+        }
         for (int i = 0; i < text.Length; i++)
         {
             this.textObject.text = text.Substring(0, i + 1);
