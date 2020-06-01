@@ -8,8 +8,6 @@ public class PauseController : MonoBehaviour
     public GameObject pauseUI;
     public GameObject settingsUI;
     public GameObject deathUI;
-    public AudioClip deathSoundtrack;
-    public AudioSource audioBoi;
 
     public bool isPaused;
     public bool isDead;
@@ -51,8 +49,6 @@ public class PauseController : MonoBehaviour
     {
         if (victim.tag == "Player")
         {
-            audioBoi.Stop();
-            audioBoi.PlayOneShot(deathSoundtrack, 1f);
             regularUI.SetActive(false);
             StartCoroutine(DelayedDeath(2f));
         }
