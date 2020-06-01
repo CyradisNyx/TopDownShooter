@@ -6,6 +6,7 @@ public class PauseController : MonoBehaviour
 {
     public GameObject regularUI;
     public GameObject pauseUI;
+    public GameObject settingsUI;
 
     public bool isPaused;
 
@@ -34,6 +35,7 @@ public class PauseController : MonoBehaviour
         {
             regularUI.SetActive(true);
             pauseUI.SetActive(false);
+            settingsUI.SetActive(false);
             Time.timeScale = 1f;
         }
     }

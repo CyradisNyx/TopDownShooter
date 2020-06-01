@@ -28,6 +28,8 @@ public class Gun : MonoBehaviour
         temp.a = 1;
         GetComponent<Image>().color = temp;
 
+        EventMaster.Instance.onPause += Pause;
+
         if (transform.parent.name == "LeftGun")
         {
             EventMaster.Instance.onLeftClick += OnClick;
@@ -39,10 +41,17 @@ public class Gun : MonoBehaviour
     }
 
     public virtual void OnClick(Vector3 mousePos) { }
+    public void Pause(bool isPaused) { this.canShoot = !isPaused; }
 
     void OnDisable()
     {
         gameObject.GetComponent<Image>().enabled = false;
         canShoot = false;
+    }
+
+    void OnEnable()
+    {
+        gameObject.GetComponent<Image>().enabled = true;
+        canShoot = true;
     }
 }

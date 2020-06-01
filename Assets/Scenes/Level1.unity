@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regularUI: {fileID: 2105994939}
   pauseUI: {fileID: 1359111979}
+  settingsUI: {fileID: 2110446293}
   isPaused: 0
 --- !u!4 &17986559
 Transform:
@@ -3587,7 +3588,7 @@ RectTransform:
   - {fileID: 1528628726}
   - {fileID: 1919986019}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7268,7 +7269,7 @@ RectTransform:
   - {fileID: 534347397}
   - {fileID: 1409003198}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7387,7 +7388,7 @@ RectTransform:
   - {fileID: 1526770810}
   - {fileID: 657579523}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
