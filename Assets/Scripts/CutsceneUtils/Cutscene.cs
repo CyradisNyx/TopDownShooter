@@ -20,6 +20,7 @@ public class Cutscene : MonoBehaviour
     public virtual float CutsceneLength { get; set; }
 
     bool active = false;
+    bool skipText = false;
 
     Vector3 scenePosActual;
 
@@ -55,7 +56,7 @@ public class Cutscene : MonoBehaviour
 
     public virtual IEnumerator CutsceneProcedure() { yield return null; }
 
-    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.2f, float waitAfter = 2f)
+    protected IEnumerator TypeWriter(string text, int actorID = -1, float waitBetween = 0.1f)
     {
         if (actorID >= 0)
         {
@@ -75,14 +76,20 @@ public class Cutscene : MonoBehaviour
             textBubblePrefab.transform.SetParent(actors[actorID].transform);
         }
 
+        this.skipText = false;
+        StartCoroutine(SkipText());
+
         for (int i = 0; i < text.Length; i++)
         {
+            if (this.skipText) { i = text.Length - 1; }
             this.textObject.text = text.Substring(0, i + 1);
             textSound.pitch = Random.Range(0.9f, 1.1f);
             textSound.Play(0);
-            float waitVariation = Random.Range(waitBetween - 0.1f, waitBetween + 0.1f);
+            float waitVariation = Random.Range(waitBetween - 0.05f, waitBetween + 0.05f);
             yield return new WaitForSeconds(waitVariation);
         }
+
+        this.skipText = true;
 
         yield return new WaitUntil(() => Input.anyKeyDown);
 
@@ -94,41 +101,17 @@ public class Cutscene : MonoBehaviour
         yield return null;
     }
 
-    protected IEnumerator TypeWriterOriginal(string text, int actorID = -1, float waitBetween = 0.2f, float waitAfter = 2f)
+    protected IEnumerator SkipText()
     {
-        if (actorID >= 0)
+        while (this.skipText == false)
         {
-            // Add text bubble, start talking noise
-            Vector3 bubblePos = new Vector3(
-                actors[actorID].transform.position.x + 0.5f,
-                actors[actorID].transform.position.y + 2f,
-                actors[actorID].transform.position.z + 1f
-                );
-            Vector3 bubbleRot = new Vector3(
-                90f,
-                0f,
-                0f
-                );
-
-            GameObject textBubblePrefab = Instantiate(textBubble, bubblePos, Quaternion.Euler(bubbleRot));
-            textBubblePrefab.transform.SetParent(actors[actorID].transform);
-        }
-        for (int i = 0; i < text.Length; i++)
-        {
-            this.textObject.text = text.Substring(0, i + 1);
-            textSound.pitch = Random.Range(0.9f, 1.1f);
-            textSound.Play(0);
-            float waitVariation = Random.Range(waitBetween - 0.1f, waitBetween + 0.1f);
-            yield return new WaitForSeconds(waitVariation);
+            if (Input.anyKeyDown && !Input.GetKeyDown("escape"))
+            {
+                this.skipText = true;
+            }
+            yield return null;
         }
 
-        yield return new WaitForSeconds(waitAfter);
-
-        if (actorID >= 0)
-        {
-            // Remove text bubble, end talking noise
-            Destroy(actors[actorID].transform.GetChild(0).gameObject);
-        }
         yield return null;
     }
 
