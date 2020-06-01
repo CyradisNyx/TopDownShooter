@@ -17,7 +17,6 @@ public class EventMaster : MonoBehaviour
         }
 
         _instance = this;
-        //DontDestroyOnLoad(this.gameObject);
     }
 
     public event Action<GameObject> onButtonPress;

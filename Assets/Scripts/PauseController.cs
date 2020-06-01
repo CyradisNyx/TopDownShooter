@@ -14,6 +14,7 @@ public class PauseController : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         EventMaster.Instance.onPause += Pause;
         EventMaster.Instance.onDeath += Death;
         isPaused = false;
