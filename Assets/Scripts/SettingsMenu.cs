@@ -10,12 +10,12 @@ public class SettingsMenu : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         //Debug.Log(volume.ToString());
-        audioMixer.SetFloat("MusicVolume", volume);
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetEffectsVolume(float volume)
     {
-        audioMixer.SetFloat("EffectsVolume", volume);
+        audioMixer.SetFloat("EffectsVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetFullscreen(bool isFullscreen)
