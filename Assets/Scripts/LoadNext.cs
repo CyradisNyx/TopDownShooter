@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadNext : MonoBehaviour
 {
@@ -16,5 +17,6 @@ public class LoadNext : MonoBehaviour
         if (coll.gameObject.tag != "Player") { return; }
 
         Debug.Log("Load Next Scene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
