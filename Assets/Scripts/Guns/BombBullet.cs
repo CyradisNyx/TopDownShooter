@@ -8,7 +8,7 @@ public class BombBullet : MonoBehaviour
 
     float damage = 1f;
     float speed = 15f;
-    float radius = 5f;
+    float radius = 3f;
 
     public void Update()
     {
@@ -29,6 +29,14 @@ public class BombBullet : MonoBehaviour
             {
                 if (ReferenceEquals(hitColliders[i].gameObject.name, alreadyHit[j].name)) { continue; }
             }
+
+            RaycastHit hitInfo;
+            Vector3 direction = hitColliders[i].gameObject.transform.position - this.gameObject.transform.position;
+            if (Physics.Raycast(this.gameObject.transform.position, direction, out hitInfo, radius))
+            {
+                if (hitInfo.collider.gameObject.name != hitColliders[i].gameObject.name) { continue; }
+            }
+
             EventMaster.Instance.BulletImpact(damage, hitColliders[i].gameObject);
             alreadyHit.Add(hitColliders[i].gameObject);
             Debug.Log(hitColliders[i].gameObject.name);
