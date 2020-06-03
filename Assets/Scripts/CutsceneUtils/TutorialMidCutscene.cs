@@ -14,7 +14,7 @@ public class TutorialMidCutscene : Cutscene
         yield return TypeWriter("oh good, you made it!", 0);
         yield return TypeWriter("this is a gun", 0);
         yield return TypeWriter("run into it to pick it up", 0);
-        yield return TypeWriter("then click left or right to assign it to the matching slot", 0);
+        yield return TypeWriter("if both slots are full, click left or right mouse to assign it", 0);
         yield return TypeWriter("i'll scout ahead while you figure it out", 0);
 
         yield return Move(0, positions[0].transform.position, 5f);
