@@ -57,6 +57,7 @@ public class DynamicLevel : MonoBehaviour
         if (type == ' ')
         {
             Tile tileComp = output.AddComponent(typeof(TileNone)) as TileNone;
+            tileComp.gameObject.name = "None";
         }
         else if (type == '1')
         {
