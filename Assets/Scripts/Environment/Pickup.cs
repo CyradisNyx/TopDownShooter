@@ -66,6 +66,11 @@ public class Pickup : MonoBehaviour
 
     IEnumerator WhichGun(string type)
     {
+        GameObject leftGun = GameObject.Find("/UI/LeftGun/ActualGunObject");
+        if (leftGun.GetComponent<Gun>() == null) { EventMaster.Instance.PickupGun(type, "left"); yield break; }
+        GameObject rightGun = GameObject.Find("/UI/RightGun/ActualGunObject");
+        if (rightGun.GetComponent<Gun>() == null) { EventMaster.Instance.PickupGun(type, "right"); yield break; }
+
         yield return new WaitUntil(() => Input.GetMouseButton(0) || Input.GetMouseButton(1));
 
         if (Input.GetMouseButtonDown(0)) { EventMaster.Instance.PickupGun(type, "left"); }
