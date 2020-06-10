@@ -26,6 +26,7 @@ public class GuardAI : MonoBehaviour
     public Vector3 patrolPointB;
 
     public bool paused;
+    public bool moving;
 
     public void Start()
     {
@@ -45,6 +46,8 @@ public class GuardAI : MonoBehaviour
     public void Update()
     {
         // Check for being stuck, and reset to Patrol
+        this.gameObject.transform.Find("Sprite").GetComponent<Animator>().SetBool("Moving", moving);
+
         if (paused) { return; }
         if (!agent.hasPath && agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
         {
@@ -135,6 +138,8 @@ public class GuardAI : MonoBehaviour
 
         public void Update()
         {
+            sm.moving = true;
+
             // If at pointA/B, reverse direction to the other
             if (sm.SimilarVector3(sm.transform.position, pointA)) { this.toA = false; }
             if (sm.SimilarVector3(sm.transform.position, pointB)) { this.toA = true; }
@@ -165,6 +170,8 @@ public class GuardAI : MonoBehaviour
 
         public void Update()
         {
+            sm.moving = true;
+
             // If guard can see player, save their location
             if (sm.SeePlayer(viewDistance))
             {
@@ -203,6 +210,7 @@ public class GuardAI : MonoBehaviour
 
         public void Update()
         {
+            sm.moving = false;
             sm.agent.isStopped = true;
 
             if (waitCount < framesBetween)
@@ -241,6 +249,7 @@ public class GuardAI : MonoBehaviour
 
         public void Update()
         {
+            sm.moving = false;
             sm.agent.isStopped = true;
 
             // Spin around and check each ray
