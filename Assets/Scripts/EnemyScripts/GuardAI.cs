@@ -45,9 +45,9 @@ public class GuardAI : MonoBehaviour
 
     public void Update()
     {
-        // Check for being stuck, and reset to Patrol
         this.gameObject.transform.Find("Sprite").GetComponent<Animator>().SetBool("Moving", moving);
 
+        // Check for being stuck, and reset to Patrol
         if (paused) { return; }
         if (!agent.hasPath && agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
         {
