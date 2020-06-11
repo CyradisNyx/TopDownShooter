@@ -254,6 +254,7 @@ MonoBehaviour:
   patrolPointA: {x: 0, y: 0, z: 0}
   patrolPointB: {x: 0, y: 0, z: 0}
   paused: 0
+  moving: 0
 --- !u!54 &5992029516832609777
 Rigidbody:
   m_ObjectHideFlags: 0
