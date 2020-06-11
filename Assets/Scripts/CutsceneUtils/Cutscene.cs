@@ -131,10 +131,16 @@ public class Cutscene : MonoBehaviour
         while (Vector3.Distance(actors[actorID].transform.position, moveTo) >= 0.5f)
         {
             Debug.Log("moving");
+            actors[actorID].GetComponent<Animator>().SetBool("Moving", true);
             actors[actorID].transform.position = Vector3.MoveTowards(actors[actorID].transform.position, moveTo, speed * Time.deltaTime);
+            actors[actorID].transform.LookAt(moveTo);
+            Vector3 tmp = actors[actorID].transform.localEulerAngles;
+            tmp.x = 90f;
+            actors[actorID].transform.localEulerAngles = tmp;
             yield return null;
         }
 
+        actors[actorID].GetComponent<Animator>().SetBool("Moving", false);
         yield return null;
     }
 
