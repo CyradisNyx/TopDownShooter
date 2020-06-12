@@ -28,6 +28,8 @@ public class GuardAI : MonoBehaviour
     public bool paused;
     public bool moving;
 
+    public float slowTime = 10f;
+
     public void Start()
     {
         this._state = State.StatePatrol;
@@ -39,6 +41,7 @@ public class GuardAI : MonoBehaviour
         this.scan = new Scan(this.gameObject);
 
         EventMaster.Instance.onBulletImpact += BulletImpact;
+        EventMaster.Instance.onSlow += Slow;
         EventMaster.Instance.onCutsceneStart += CutsceneStart;
         EventMaster.Instance.onCutsceneEnd += CutsceneEnd;
     }
@@ -71,11 +74,13 @@ public class GuardAI : MonoBehaviour
         }
     }
 
-    public void OnDestroy() { EventMaster.Instance.onBulletImpact -= BulletImpact; }
+    public void OnDestroy() { EventMaster.Instance.onBulletImpact -= BulletImpact; EventMaster.Instance.onSlow -= Slow; }
 
     public void OnCollisionEnter(Collision coll) { this._state = State.StateScan; }
 
     public void BulletImpact(float damage, GameObject coll) { if (coll.name == this.gameObject.name) { this._state = State.StateScan; } }
+
+    public void Slow(GameObject coll) { if (coll.name == this.gameObject.name) { StartCoroutine(slowFor(slowTime)); } }
 
     public void CutsceneStart(string type) { paused = true; }
 
@@ -114,6 +119,17 @@ public class GuardAI : MonoBehaviour
         // All clear
         else { Debug.DrawLine(transform.position, transform.position + transform.forward * range, Color.green); }
         return false;
+    }
+
+    IEnumerator slowFor(float time)
+    {
+        agent.speed /= 2;
+
+        yield return new WaitForSeconds(time);
+
+        agent.speed *= 2;
+
+        yield return null;
     }
 
     public class Patrol

@@ -33,5 +33,12 @@ public class GunAssigner : MonoBehaviour
             count.gunComponent = this.gameObject.GetComponent<BombGun>();
             count.ResetGun();
         }
+
+        if (type == "IceGun")
+        {
+            this.gameObject.AddComponent(typeof(IceGun));
+            count.gunComponent = this.gameObject.GetComponent<IceGun>();
+            count.ResetGun();
+        }
     }
 }

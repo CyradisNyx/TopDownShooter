@@ -13,6 +13,7 @@ public class Pickup : MonoBehaviour
     {
         BasicGun,
         BombGun,
+        IceGun,
         Health,
     }
     public pickupTypes type;
@@ -27,6 +28,11 @@ public class Pickup : MonoBehaviour
         if (type== pickupTypes.BombGun)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Guns/PoisonShot");
+        }
+
+        if (type == pickupTypes.IceGun)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Guns/IceShot");
         }
 
         if (type == pickupTypes.Health)
@@ -53,6 +59,11 @@ public class Pickup : MonoBehaviour
         if (type == pickupTypes.BombGun)
         {
             StartCoroutine(WhichGun("BombGun"));
+        }
+
+        if (type == pickupTypes.IceGun)
+        {
+            StartCoroutine(WhichGun("IceGun"));
         }
 
         if (type == pickupTypes.Health)

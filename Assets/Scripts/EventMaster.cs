@@ -55,6 +55,15 @@ public class EventMaster : MonoBehaviour
         }
     }
 
+    public event Action<GameObject> onSlow;
+    public void Slow(GameObject collision)
+    {
+        if (onSlow != null)
+        {
+            onSlow(collision);
+        }
+    }
+
     public event Action<GameObject> onDeath;
     public void Death(GameObject victim)
     {
